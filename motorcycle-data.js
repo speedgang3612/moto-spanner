@@ -5,7 +5,7 @@ window.MOTORCYCLE_DATABASE = [
     country: "Japan",
     models: [
       ["PCX125", 125, "cvt", "current"], ["PCX150", 150, "cvt", "discontinued"], ["PCX160", 160, "cvt", "current"],
-      ["ADV150", 150, "cvt", "discontinued"], ["ADV160", 160, "cvt", "current"], ["Forza 250", 250, "cvt", "current"],
+      ["ADV150", 150, "cvt", "discontinued"], ["ADV160", 160, "cvt", "current"], ["ADV350", 330, "cvt", "current", "liquid"], ["Forza 250", 250, "cvt", "current"],
       ["Forza 300", 300, "cvt", "discontinued"], ["Forza 350", 350, "cvt", "current"], ["Silver Wing", 600, "cvt", "discontinued"],
       ["Super Cub C125", 125, "manual", "current"], ["Monkey 125", 125, "manual", "current"], ["Grom/MSX125", 125, "manual", "current"],
       ["CB125R", 125, "manual", "current"], ["CB250R", 250, "manual", "discontinued"], ["CB300R", 300, "manual", "current"],
