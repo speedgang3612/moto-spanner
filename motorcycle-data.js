@@ -1,286 +1,4006 @@
 window.MOTORCYCLE_DATABASE = [
   {
-    maker: "Honda",
-    company: "Honda Motor Co., Ltd.",
-    country: "Japan",
-    models: [
-      ["PCX125", 125, "cvt", "current"], ["PCX150", 150, "cvt", "discontinued"], ["PCX160", 160, "cvt", "current"],
-      ["ADV150", 150, "cvt", "discontinued"], ["ADV160", 160, "cvt", "current"], ["ADV350", 330, "cvt", "current", "liquid"], ["Forza 250", 250, "cvt", "current"],
-      ["Forza 300", 300, "cvt", "discontinued"], ["Forza 350", 350, "cvt", "current"], ["Silver Wing", 600, "cvt", "discontinued"],
-      ["Super Cub C125", 125, "manual", "current"], ["Monkey 125", 125, "manual", "current"], ["Grom/MSX125", 125, "manual", "current"],
-      ["CB125R", 125, "manual", "current"], ["CB250R", 250, "manual", "discontinued"], ["CB300R", 300, "manual", "current"],
-      ["CB400 Super Four", 400, "manual", "discontinued"], ["CB500F", 471, "manual", "current"], ["CB500 Hornet", 471, "manual", "current"],
-      ["CB650R", 649, "manual", "current"], ["CB750 Hornet", 755, "manual", "current"], ["CB1000R", 998, "manual", "current"],
-      ["CB1100", 1140, "manual", "discontinued"], ["CBR125R", 125, "manual", "discontinued"], ["CBR250R", 250, "manual", "discontinued"],
-      ["CBR300R", 286, "manual", "current"], ["CBR500R", 471, "manual", "current"], ["CBR600RR", 599, "manual", "current"],
-      ["CBR650R", 649, "manual", "current"], ["CBR1000RR Fireblade", 999, "manual", "current"], ["Rebel 250", 250, "manual", "discontinued"],
-      ["Rebel 300", 286, "manual", "current"], ["Rebel 500", 471, "manual", "current"], ["Rebel 1100", 1084, "manual", "current"],
-      ["CL500/SCL500", 471, "manual", "current"], ["CRF250L", 249, "manual", "current"], ["CRF300L", 286, "manual", "current"],
-      ["Africa Twin CRF1000L", 998, "manual", "discontinued"], ["Africa Twin CRF1100L", 1084, "dct", "current"], ["Transalp XL750", 755, "manual", "current"],
-      ["Gold Wing", 1833, "dct", "current"], ["VFR800", 782, "manual", "discontinued"], ["DN-01", 680, "cvt", "discontinued"]
+    "maker": "Honda",
+    "company": "Honda Motor Co., Ltd.",
+    "country": "Japan",
+    "models": [
+      {
+        "name": "ADV150",
+        "cc": 150,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "ADV160",
+        "cc": 160,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "ADV350",
+        "cc": 330,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Africa Twin CRF1000L",
+        "cc": 998,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Africa Twin CRF1100L",
+        "cc": 1084,
+        "transmission": "dct",
+        "status": "current"
+      },
+      {
+        "name": "CB1000GT",
+        "cc": 1000,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "CB1000R",
+        "cc": 998,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "CB1100",
+        "cc": 1140,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "CB125R",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "CB250R",
+        "cc": 250,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "CB300R",
+        "cc": 300,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "CB400 Super Four",
+        "cc": 400,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "CB500 Hornet",
+        "cc": 471,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "CB500F",
+        "cc": 471,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "CB650R",
+        "cc": 649,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "CB750 Hornet",
+        "cc": 755,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "CBR1000RR Fireblade",
+        "cc": 999,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "CBR1000RR-R Fireblade",
+        "cc": 1000,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "CBR1000RR-R Fireblade SP",
+        "cc": 1000,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "CBR125R",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "CBR250R",
+        "cc": 250,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "CBR300R",
+        "cc": 286,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "CBR500R",
+        "cc": 471,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "CBR600RR",
+        "cc": 599,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "CBR650R",
+        "cc": 649,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "CL500/SCL500",
+        "cc": 471,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "CRF250L",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "CRF300L",
+        "cc": 286,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "CRF450RL",
+        "cc": 449,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "DN-01",
+        "cc": 680,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "Forza 250",
+        "cc": 250,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Forza 300",
+        "cc": 300,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "Forza 350",
+        "cc": 350,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Fury",
+        "cc": 1312,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Gold Wing",
+        "cc": 1833,
+        "transmission": "dct",
+        "status": "current"
+      },
+      {
+        "name": "Grom/MSX125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Metropolitan",
+        "cc": 49,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Monkey 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Navi",
+        "cc": 109,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "NC750X",
+        "cc": 745,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "NT1100",
+        "cc": 1084,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "NT1100 DCT",
+        "cc": 1084,
+        "transmission": "dct",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "PCX125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "PCX150",
+        "cc": 150,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "PCX160",
+        "cc": 160,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Rebel 1100",
+        "cc": 1084,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Rebel 1100T",
+        "cc": 1084,
+        "transmission": "dct",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Rebel 250",
+        "cc": 250,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Rebel 300",
+        "cc": 286,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Rebel 500",
+        "cc": 471,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "SH125i",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "SH150i",
+        "cc": 150,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "SH350i",
+        "cc": 330,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Shadow Phantom",
+        "cc": 745,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Silver Wing",
+        "cc": 600,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "Super Cub C125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Trail125",
+        "cc": 124,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Transalp XL750",
+        "cc": 755,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "VFR800",
+        "cc": 782,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "X-ADV",
+        "cc": 745,
+        "transmission": "dct",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "XR150L",
+        "cc": 149,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      }
     ]
   },
   {
-    maker: "Yamaha",
-    company: "Yamaha Motor Co., Ltd.",
-    country: "Japan",
-    models: [
-      ["NMAX 125", 125, "cvt", "current"], ["NMAX 155", 155, "cvt", "current"], ["XMAX 250", 250, "cvt", "current"],
-      ["XMAX 300", 292, "cvt", "current"], ["TMAX 500", 499, "cvt", "discontinued"], ["TMAX 530", 530, "cvt", "discontinued"],
-      ["TMAX 560", 562, "cvt", "current"], ["Vino 50", 50, "cvt", "discontinued"], ["Zuma 125", 125, "cvt", "current"],
-      ["YZF-R125", 125, "manual", "current"], ["YZF-R15", 155, "manual", "current"], ["YZF-R3", 321, "manual", "current"],
-      ["YZF-R6", 599, "manual", "discontinued"], ["YZF-R7", 689, "manual", "current"], ["YZF-R1", 998, "manual", "current"],
-      ["MT-03", 321, "manual", "current"], ["MT-07", 689, "manual", "current"], ["MT-09", 890, "manual", "current"],
-      ["MT-10", 998, "manual", "current"], ["XSR700", 689, "manual", "current"], ["XSR900", 890, "manual", "current"],
-      ["SR400", 399, "manual", "discontinued"], ["SR500", 499, "manual", "discontinued"], ["TW200", 196, "manual", "current"],
-      ["XT225 Serow", 223, "manual", "discontinued"], ["XT250", 249, "manual", "current"], ["WR250R", 250, "manual", "discontinued"],
-      ["Tenere 700", 689, "manual", "current"], ["Tracer 9", 890, "manual", "current"], ["FJR1300", 1298, "manual", "discontinued"],
-      ["Bolt", 942, "manual", "current"], ["V Star 250", 249, "manual", "current"], ["VMAX 1200", 1198, "manual", "discontinued"],
-      ["VMAX 1700", 1679, "manual", "discontinued"]
+    "maker": "Yamaha",
+    "company": "Yamaha Motor Co., Ltd.",
+    "country": "Japan",
+    "models": [
+      {
+        "name": "Aerox 155",
+        "cc": 155,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Axis Z",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Bolt",
+        "cc": 942,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Cygnus Gryphus",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "E-Vino",
+        "cc": 0,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Fazzio",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "FJR1300",
+        "cc": 1298,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Jog 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "MT-03",
+        "cc": 321,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "MT-07",
+        "cc": 689,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "MT-09",
+        "cc": 890,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "MT-09 SP",
+        "cc": 890,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "MT-10",
+        "cc": 998,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "MT-10 SP",
+        "cc": 998,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "MT-125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "MT-25",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "NMAX 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "NMAX 155",
+        "cc": 155,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "SR400",
+        "cc": 399,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "SR500",
+        "cc": 499,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Tenere 700",
+        "cc": 689,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Tenere 700 World Raid",
+        "cc": 689,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "TMAX 500",
+        "cc": 499,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "TMAX 530",
+        "cc": 530,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "TMAX 560",
+        "cc": 562,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Tracer 9",
+        "cc": 890,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Tracer 9 GT",
+        "cc": 890,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Tracer 9 GT+ Y-AMT",
+        "cc": 890,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Tricity 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Tricity 155",
+        "cc": 155,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Tricity 300",
+        "cc": 292,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "TW200",
+        "cc": 196,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "V Star 250",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Vino 50",
+        "cc": 50,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "VMAX 1200",
+        "cc": 1198,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "VMAX 1700",
+        "cc": 1679,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "WR250R",
+        "cc": 250,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "XMAX 250",
+        "cc": 250,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "XMAX 300",
+        "cc": 292,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "XSR125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "XSR155",
+        "cc": 155,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "XSR700",
+        "cc": 689,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "XSR900",
+        "cc": 890,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "XSR900 GP",
+        "cc": 890,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "XT225 Serow",
+        "cc": 223,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "XT250",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "YZF-R1",
+        "cc": 998,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "YZF-R125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "YZF-R15",
+        "cc": 155,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "YZF-R1M",
+        "cc": 998,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "YZF-R25",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "YZF-R3",
+        "cc": 321,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "YZF-R6",
+        "cc": 599,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "YZF-R7",
+        "cc": 689,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "YZF-R9",
+        "cc": 890,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Zuma 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      }
     ]
   },
   {
-    maker: "Kawasaki",
-    company: "Kawasaki Motors, Ltd.",
-    country: "Japan",
-    models: [
-      ["J125", 125, "cvt", "discontinued"], ["J300", 299, "cvt", "discontinued"], ["Ninja 250", 249, "manual", "current"],
-      ["Ninja 300", 296, "manual", "discontinued"], ["Ninja 400", 399, "manual", "current"], ["Ninja 500", 451, "manual", "current"],
-      ["Ninja 650", 649, "manual", "current"], ["Ninja ZX-4R", 399, "manual", "current"], ["Ninja ZX-6R", 636, "manual", "current"],
-      ["Ninja ZX-10R", 998, "manual", "current"], ["Ninja ZX-14R", 1441, "manual", "discontinued"], ["Ninja H2", 998, "manual", "current"],
-      ["Z125 Pro", 125, "manual", "current"], ["Z250", 249, "manual", "current"], ["Z300", 296, "manual", "discontinued"],
-      ["Z400", 399, "manual", "discontinued"], ["Z500", 451, "manual", "current"], ["Z650", 649, "manual", "current"],
-      ["Z800", 806, "manual", "discontinued"], ["Z900", 948, "manual", "current"], ["Z1000", 1043, "manual", "discontinued"],
-      ["Z H2", 998, "manual", "current"], ["W650", 675, "manual", "discontinued"], ["W800", 773, "manual", "current"],
-      ["Vulcan S", 649, "manual", "current"], ["Vulcan 900", 903, "manual", "current"], ["Versys-X 300", 296, "manual", "current"],
-      ["Versys 650", 649, "manual", "current"], ["Versys 1000", 1043, "manual", "current"], ["KLR650", 652, "manual", "current"],
-      ["KLX230", 233, "manual", "current"], ["KLX250", 249, "manual", "discontinued"], ["KSR110", 111, "manual", "discontinued"],
-      ["Balius 250", 249, "manual", "discontinued"], ["Estrella 250", 249, "manual", "discontinued"]
+    "maker": "Kawasaki",
+    "company": "Kawasaki Motors, Ltd.",
+    "country": "Japan",
+    "models": [
+      {
+        "name": "Balius 250",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Eliminator 400",
+        "cc": 398,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Eliminator 500",
+        "cc": 451,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Estrella 250",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "J125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "J300",
+        "cc": 299,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "KLR650",
+        "cc": 652,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "KLX230",
+        "cc": 233,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "KLX250",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "KLX300",
+        "cc": 292,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "KLX300SM",
+        "cc": 292,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "KSR110",
+        "cc": 111,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Meguro K3",
+        "cc": 773,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Ninja 1100SX",
+        "cc": 1099,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Ninja 250",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Ninja 300",
+        "cc": 296,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Ninja 400",
+        "cc": 399,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Ninja 500",
+        "cc": 451,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Ninja 650",
+        "cc": 649,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Ninja 7 Hybrid",
+        "cc": 451,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Ninja e-1",
+        "cc": 0,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Ninja H2",
+        "cc": 998,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Ninja ZX-10R",
+        "cc": 998,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Ninja ZX-14R",
+        "cc": 1441,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Ninja ZX-4R",
+        "cc": 399,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Ninja ZX-6R",
+        "cc": 636,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Versys 1000",
+        "cc": 1043,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Versys 1100",
+        "cc": 1099,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Versys 650",
+        "cc": 649,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Versys-X 300",
+        "cc": 296,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Vulcan 900",
+        "cc": 903,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Vulcan S",
+        "cc": 649,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "W650",
+        "cc": 675,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "W800",
+        "cc": 773,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Z e-1",
+        "cc": 0,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Z H2",
+        "cc": 998,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Z1000",
+        "cc": 1043,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Z125 Pro",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Z250",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Z300",
+        "cc": 296,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Z400",
+        "cc": 399,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Z500",
+        "cc": 451,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Z650",
+        "cc": 649,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Z650 S",
+        "cc": 649,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Z650RS",
+        "cc": 649,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Z7 Hybrid",
+        "cc": 451,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Z800",
+        "cc": 806,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Z900",
+        "cc": 948,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Z900RS",
+        "cc": 948,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Z900RS Cafe",
+        "cc": 948,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      }
     ]
   },
   {
-    maker: "Suzuki",
-    company: "Suzuki Motor Corporation",
-    country: "Japan",
-    models: [
-      ["Burgman 125", 125, "cvt", "current"], ["Burgman 200", 200, "cvt", "discontinued"], ["Burgman 400", 400, "cvt", "current"],
-      ["Burgman 650", 638, "cvt", "discontinued"], ["Address 110", 110, "cvt", "discontinued"], ["Address 125", 125, "cvt", "current"],
-      ["Avenis 125", 125, "cvt", "current"], ["GSX-R125", 125, "manual", "current"], ["GSX-S125", 125, "manual", "current"],
-      ["GSX250R", 248, "manual", "current"], ["GSX-R600", 599, "manual", "discontinued"], ["GSX-R750", 750, "manual", "discontinued"],
-      ["GSX-R1000", 999, "manual", "discontinued"], ["GSX-S750", 749, "manual", "discontinued"], ["GSX-S950", 999, "manual", "current"],
-      ["GSX-S1000", 999, "manual", "current"], ["GSX-S1000GT", 999, "manual", "current"], ["Katana", 999, "manual", "current"],
-      ["SV650", 645, "manual", "current"], ["V-Strom 250", 248, "manual", "current"], ["V-Strom 650", 645, "manual", "current"],
-      ["V-Strom 800", 776, "manual", "current"], ["V-Strom 1000", 1037, "manual", "discontinued"], ["V-Strom 1050", 1037, "manual", "current"],
-      ["Hayabusa", 1340, "manual", "current"], ["DR-Z400SM", 398, "manual", "current"], ["VanVan 200", 199, "manual", "discontinued"],
-      ["Intruder 800", 805, "manual", "discontinued"], ["Boulevard M109R", 1783, "manual", "current"]
+    "maker": "Suzuki",
+    "company": "Suzuki Motor Corporation",
+    "country": "Japan",
+    "models": [
+      {
+        "name": "Address 110",
+        "cc": 110,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "Address 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Avenis 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Boulevard M109R",
+        "cc": 1783,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Burgman 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Burgman 200",
+        "cc": 200,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "Burgman 400",
+        "cc": 400,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Burgman 650",
+        "cc": 638,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "Burgman Street 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Burgman Street 125EX",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "DR-Z400SM",
+        "cc": 398,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "DR-Z4S",
+        "cc": 398,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "DR-Z4SM",
+        "cc": 398,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "DR650S",
+        "cc": 644,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "GSX-8R",
+        "cc": 776,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "GSX-8S",
+        "cc": 776,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "GSX-8T",
+        "cc": 776,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "GSX-8TT",
+        "cc": 776,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "GSX-R1000",
+        "cc": 999,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "GSX-R125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "GSX-R600",
+        "cc": 599,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "GSX-R750",
+        "cc": 750,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "GSX-S1000",
+        "cc": 999,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "GSX-S1000GT",
+        "cc": 999,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "GSX-S125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "GSX-S750",
+        "cc": 749,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "GSX-S950",
+        "cc": 999,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "GSX250R",
+        "cc": 248,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Hayabusa",
+        "cc": 1340,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Intruder 800",
+        "cc": 805,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Katana",
+        "cc": 999,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "RM-Z250",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "RM-Z450",
+        "cc": 449,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "SV650",
+        "cc": 645,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "V-Strom 1000",
+        "cc": 1037,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "V-Strom 1050",
+        "cc": 1037,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "V-Strom 250",
+        "cc": 248,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "V-Strom 650",
+        "cc": 645,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "V-Strom 800",
+        "cc": 776,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "V-Strom 800DE",
+        "cc": 776,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "VanVan 200",
+        "cc": 199,
+        "transmission": "manual",
+        "status": "discontinued"
+      }
     ]
   },
   {
-    maker: "BMW Motorrad",
-    company: "BMW AG Motorcycles",
-    country: "Germany",
-    models: [
-      ["C 400 X", 350, "cvt", "current"], ["C 400 GT", 350, "cvt", "current"], ["C 650 GT", 647, "cvt", "discontinued"],
-      ["CE 02", 0, "cvt", "current"], ["CE 04", 0, "cvt", "current"], ["G 310 R", 313, "manual", "current"],
-      ["G 310 GS", 313, "manual", "current"], ["F 650 GS", 652, "manual", "discontinued"], ["F 700 GS", 798, "manual", "discontinued"],
-      ["F 750 GS", 853, "manual", "current"], ["F 800 GS", 895, "manual", "current"], ["F 850 GS", 853, "manual", "discontinued"],
-      ["F 900 R", 895, "manual", "current"], ["F 900 XR", 895, "manual", "current"], ["R nineT", 1170, "manual", "discontinued"],
-      ["R 12 nineT", 1170, "manual", "current"], ["R 1200 GS", 1170, "manual", "discontinued"], ["R 1250 GS", 1254, "manual", "current"],
-      ["R 1300 GS", 1300, "manual", "current"], ["R 18", 1802, "manual", "current"], ["K 1600 GT", 1649, "manual", "current"],
-      ["S 1000 R", 999, "manual", "current"], ["S 1000 RR", 999, "manual", "current"], ["S 1000 XR", 999, "manual", "current"],
-      ["M 1000 RR", 999, "manual", "current"]
+    "maker": "BMW Motorrad",
+    "company": "BMW AG Motorcycles",
+    "country": "Germany",
+    "models": [
+      {
+        "name": "C 400 GT",
+        "cc": 350,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "C 400 X",
+        "cc": 350,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "C 650 GT",
+        "cc": 647,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "C evolution",
+        "cc": 0,
+        "transmission": "cvt",
+        "status": "discontinued",
+        "cooling": "air"
+      },
+      {
+        "name": "CE 02",
+        "cc": 0,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "CE 04",
+        "cc": 0,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "F 450 GS",
+        "cc": 450,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "F 650 GS",
+        "cc": 652,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "F 700 GS",
+        "cc": 798,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "F 750 GS",
+        "cc": 853,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "F 800 GS",
+        "cc": 895,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "F 850 GS",
+        "cc": 853,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "F 900 GS",
+        "cc": 895,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "F 900 GS Adventure",
+        "cc": 895,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "F 900 R",
+        "cc": 895,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "F 900 XR",
+        "cc": 895,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "G 310 GS",
+        "cc": 313,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "G 310 R",
+        "cc": 313,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "K 1600 GT",
+        "cc": 1649,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "M 1000 R",
+        "cc": 999,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "M 1000 RR",
+        "cc": 999,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "M 1000 XR",
+        "cc": 999,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "R 12",
+        "cc": 1170,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "R 12 G/S",
+        "cc": 1170,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "R 12 nineT",
+        "cc": 1170,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "R 1200 GS",
+        "cc": 1170,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "R 1250 GS",
+        "cc": 1254,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "R 1300 GS",
+        "cc": 1300,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "R 1300 GS Adventure",
+        "cc": 1300,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "R 1300 R",
+        "cc": 1300,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "R 1300 RS",
+        "cc": 1300,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "R 1300 RT",
+        "cc": 1300,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "R 18",
+        "cc": 1802,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "R nineT",
+        "cc": 1170,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "S 1000 R",
+        "cc": 999,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "S 1000 RR",
+        "cc": 999,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "S 1000 XR",
+        "cc": 999,
+        "transmission": "manual",
+        "status": "current"
+      }
     ]
   },
   {
-    maker: "Ducati",
-    company: "Ducati Motor Holding S.p.A.",
-    country: "Italy",
-    models: [
-      ["Monster 696", 696, "manual", "discontinued"], ["Monster 821", 821, "manual", "discontinued"], ["Monster 937", 937, "manual", "current"],
-      ["Scrambler Icon 800", 803, "manual", "current"], ["Scrambler Sixty2", 399, "manual", "discontinued"], ["Scrambler 1100", 1079, "manual", "current"],
-      ["Panigale V2", 955, "manual", "current"], ["Panigale V4", 1103, "manual", "current"], ["Streetfighter V2", 955, "manual", "current"],
-      ["Streetfighter V4", 1103, "manual", "current"], ["Multistrada 950", 937, "manual", "discontinued"], ["Multistrada V2", 937, "manual", "current"],
-      ["Multistrada V4", 1158, "manual", "current"], ["Diavel 1260", 1262, "manual", "discontinued"], ["Diavel V4", 1158, "manual", "current"],
-      ["Hypermotard 950", 937, "manual", "current"], ["SuperSport 950", 937, "manual", "current"], ["DesertX", 937, "manual", "current"]
+    "maker": "Ducati",
+    "company": "Ducati Motor Holding S.p.A.",
+    "country": "Italy",
+    "models": [
+      {
+        "name": "DesertX",
+        "cc": 937,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "DesertX Discovery",
+        "cc": 937,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "DesertX Rally",
+        "cc": 937,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "DesertX V2",
+        "cc": 890,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Desmo250 MX",
+        "cc": 250,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Desmo450 EDX",
+        "cc": 450,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Desmo450 MX",
+        "cc": 450,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Diavel 1260",
+        "cc": 1262,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Diavel V4",
+        "cc": 1158,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Diavel V4 RS",
+        "cc": 1103,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Hypermotard 698 Mono",
+        "cc": 659,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Hypermotard 698 Mono RVE",
+        "cc": 659,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Hypermotard 950",
+        "cc": 937,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Monster 696",
+        "cc": 696,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Monster 821",
+        "cc": 821,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Monster 937",
+        "cc": 937,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Monster SP",
+        "cc": 937,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Multistrada 950",
+        "cc": 937,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Multistrada V2",
+        "cc": 937,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Multistrada V4",
+        "cc": 1158,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Multistrada V4 Pikes Peak",
+        "cc": 1158,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Multistrada V4 Rally",
+        "cc": 1158,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Multistrada V4 RS",
+        "cc": 1103,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Panigale V2",
+        "cc": 955,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Panigale V2 S",
+        "cc": 890,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Panigale V4",
+        "cc": 1103,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Panigale V4 R",
+        "cc": 998,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Panigale V4 S",
+        "cc": 1103,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Scrambler 1100",
+        "cc": 1079,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Scrambler Full Throttle",
+        "cc": 803,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Scrambler Icon 800",
+        "cc": 803,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Scrambler Icon Dark",
+        "cc": 803,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Scrambler Nightshift",
+        "cc": 803,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Scrambler Sixty2",
+        "cc": 399,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Streetfighter V2",
+        "cc": 955,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Streetfighter V2 S",
+        "cc": 890,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Streetfighter V4",
+        "cc": 1103,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Streetfighter V4 S",
+        "cc": 1103,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "SuperSport 950",
+        "cc": 937,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "XDiavel V4",
+        "cc": 1158,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      }
     ]
   },
   {
-    maker: "Harley-Davidson",
-    company: "Harley-Davidson Motor Company",
-    country: "United States",
-    models: [
-      ["Street 500", 494, "manual", "discontinued"], ["Street 750", 749, "manual", "discontinued"], ["Sportster Iron 883", 883, "manual", "discontinued"],
-      ["Sportster Forty-Eight", 1202, "manual", "discontinued"], ["Nightster", 975, "manual", "current"], ["Sportster S", 1252, "manual", "current"],
-      ["Softail Standard", 1746, "manual", "current"], ["Street Bob", 1868, "manual", "current"], ["Fat Boy", 1868, "manual", "current"],
-      ["Low Rider S", 1923, "manual", "current"], ["Heritage Classic", 1868, "manual", "current"], ["Road King", 1746, "manual", "discontinued"],
-      ["Street Glide", 1923, "manual", "current"], ["Road Glide", 1923, "manual", "current"], ["Pan America 1250", 1252, "manual", "current"],
-      ["LiveWire", 0, "cvt", "discontinued"]
+    "maker": "Harley-Davidson",
+    "company": "Harley-Davidson Motor Company",
+    "country": "United States",
+    "models": [
+      {
+        "name": "Breakout",
+        "cc": 1923,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "CVO Road Glide",
+        "cc": 1977,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "CVO Street Glide",
+        "cc": 1977,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Fat Bob",
+        "cc": 1868,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Fat Boy",
+        "cc": 1868,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Freewheeler",
+        "cc": 1868,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Heritage Classic",
+        "cc": 1868,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "LiveWire",
+        "cc": 0,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "LiveWire One",
+        "cc": 0,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Low Rider S",
+        "cc": 1923,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Low Rider ST",
+        "cc": 1923,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Nightster",
+        "cc": 975,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Nightster Special",
+        "cc": 975,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Pan America 1250",
+        "cc": 1252,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Road Glide",
+        "cc": 1923,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Road King",
+        "cc": 1746,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Softail Standard",
+        "cc": 1746,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Sportster Forty-Eight",
+        "cc": 1202,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Sportster Iron 883",
+        "cc": 883,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Sportster S",
+        "cc": 1252,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Street 500",
+        "cc": 494,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Street 750",
+        "cc": 749,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Street Bob",
+        "cc": 1868,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Street Glide",
+        "cc": 1923,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Tri Glide Ultra",
+        "cc": 1868,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      }
     ]
   },
   {
-    maker: "KTM",
-    company: "KTM AG",
-    country: "Austria",
-    models: [
-      ["Duke 125", 125, "manual", "current"], ["Duke 200", 199, "manual", "current"], ["Duke 250", 249, "manual", "current"],
-      ["Duke 390", 373, "manual", "current"], ["Duke 690", 693, "manual", "discontinued"], ["Duke 790", 799, "manual", "current"],
-      ["Duke 890", 889, "manual", "discontinued"], ["Super Duke R 1290", 1301, "manual", "current"], ["RC 125", 125, "manual", "current"],
-      ["RC 200", 199, "manual", "current"], ["RC 390", 373, "manual", "current"], ["390 Adventure", 373, "manual", "current"],
-      ["790 Adventure", 799, "manual", "current"], ["890 Adventure", 889, "manual", "current"], ["1290 Super Adventure", 1301, "manual", "current"],
-      ["EXC-F 350", 350, "manual", "current"], ["EXC-F 500", 511, "manual", "current"]
+    "maker": "KTM",
+    "company": "KTM AG",
+    "country": "Austria",
+    "models": [
+      {
+        "name": "1290 Super Adventure",
+        "cc": 1301,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "1390 Super Adventure R",
+        "cc": 1350,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "1390 Super Adventure S",
+        "cc": 1350,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "1390 Super Adventure S Evo",
+        "cc": 1350,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "1390 Super Duke R",
+        "cc": 1350,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "1390 Super Duke R Evo",
+        "cc": 1350,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "390 Adventure",
+        "cc": 373,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "390 Adventure R",
+        "cc": 399,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "390 Adventure X",
+        "cc": 399,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "450 Rally Replica",
+        "cc": 450,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "790 Adventure",
+        "cc": 799,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "890 Adventure",
+        "cc": 889,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "990 Duke",
+        "cc": 947,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "990 RC R",
+        "cc": 947,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Duke 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Duke 200",
+        "cc": 199,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Duke 250",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Duke 390",
+        "cc": 373,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Duke 690",
+        "cc": 693,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Duke 790",
+        "cc": 799,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Duke 890",
+        "cc": 889,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "EXC-F 350",
+        "cc": 350,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "EXC-F 500",
+        "cc": 511,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "RC 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "RC 200",
+        "cc": 199,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "RC 390",
+        "cc": 373,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Super Duke R 1290",
+        "cc": 1301,
+        "transmission": "manual",
+        "status": "current"
+      }
     ]
   },
   {
-    maker: "Triumph",
-    company: "Triumph Motorcycles Ltd.",
-    country: "United Kingdom",
-    models: [
-      ["Speed 400", 398, "manual", "current"], ["Scrambler 400 X", 398, "manual", "current"], ["Street Triple 675", 675, "manual", "discontinued"],
-      ["Street Triple 765", 765, "manual", "current"], ["Speed Triple 1050", 1050, "manual", "discontinued"], ["Speed Triple 1200 RS", 1160, "manual", "current"],
-      ["Trident 660", 660, "manual", "current"], ["Tiger Sport 660", 660, "manual", "current"], ["Tiger 800", 800, "manual", "discontinued"],
-      ["Tiger 850 Sport", 888, "manual", "current"], ["Tiger 900", 888, "manual", "current"], ["Tiger 1200", 1160, "manual", "current"],
-      ["Bonneville T100", 900, "manual", "current"], ["Bonneville T120", 1200, "manual", "current"], ["Thruxton 1200", 1200, "manual", "discontinued"],
-      ["Rocket 3", 2458, "manual", "current"], ["Daytona 675", 675, "manual", "discontinued"], ["Daytona 660", 660, "manual", "current"]
+    "maker": "Triumph",
+    "company": "Triumph Motorcycles Ltd.",
+    "country": "United Kingdom",
+    "models": [
+      {
+        "name": "Bonneville Bobber",
+        "cc": 1200,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Bonneville Speedmaster",
+        "cc": 1200,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Bonneville T100",
+        "cc": 900,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Bonneville T120",
+        "cc": 1200,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Daytona 660",
+        "cc": 660,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Daytona 675",
+        "cc": 675,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Rocket 3",
+        "cc": 2458,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Rocket 3 Storm GT",
+        "cc": 2458,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Rocket 3 Storm R",
+        "cc": 2458,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Scrambler 1200 X",
+        "cc": 1200,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Scrambler 1200 XE",
+        "cc": 1200,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Scrambler 400 X",
+        "cc": 398,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Scrambler 900",
+        "cc": 900,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Speed 400",
+        "cc": 398,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Speed Triple 1050",
+        "cc": 1050,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Speed Triple 1200 RS",
+        "cc": 1160,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Speed Twin 1200",
+        "cc": 1200,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Speed Twin 900",
+        "cc": 900,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Street Triple 675",
+        "cc": 675,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Street Triple 765",
+        "cc": 765,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "TF 250-X",
+        "cc": 250,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "TF 450-RC",
+        "cc": 450,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Thruxton 1200",
+        "cc": 1200,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Tiger 1200",
+        "cc": 1160,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Tiger 1200 GT",
+        "cc": 1160,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Tiger 1200 Rally Pro",
+        "cc": 1160,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Tiger 800",
+        "cc": 800,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Tiger 850 Sport",
+        "cc": 888,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Tiger 900",
+        "cc": 888,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Tiger 900 GT",
+        "cc": 888,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Tiger 900 Rally Pro",
+        "cc": 888,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Tiger Sport 660",
+        "cc": 660,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Trident 660",
+        "cc": 660,
+        "transmission": "manual",
+        "status": "current"
+      }
     ]
   },
   {
-    maker: "Royal Enfield",
-    company: "Royal Enfield",
-    country: "India",
-    models: [
-      ["Classic 350", 349, "manual", "current"], ["Meteor 350", 349, "manual", "current"], ["Hunter 350", 349, "manual", "current"],
-      ["Bullet 350", 349, "manual", "current"], ["Himalayan 411", 411, "manual", "discontinued"], ["Himalayan 450", 452, "manual", "current"],
-      ["Scram 411", 411, "manual", "current"], ["Continental GT 650", 648, "manual", "current"], ["Interceptor 650", 648, "manual", "current"],
-      ["Super Meteor 650", 648, "manual", "current"], ["Shotgun 650", 648, "manual", "current"]
+    "maker": "Royal Enfield",
+    "company": "Royal Enfield",
+    "country": "India",
+    "models": [
+      {
+        "name": "Bear 650",
+        "cc": 648,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Bullet 350",
+        "cc": 349,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Bullet 500",
+        "cc": 499,
+        "transmission": "manual",
+        "status": "discontinued",
+        "cooling": "air"
+      },
+      {
+        "name": "Classic 350",
+        "cc": 349,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Classic 500",
+        "cc": 499,
+        "transmission": "manual",
+        "status": "discontinued",
+        "cooling": "air"
+      },
+      {
+        "name": "Classic 650",
+        "cc": 648,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Continental GT 650",
+        "cc": 648,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Goan Classic 350",
+        "cc": 349,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Guerrilla 450",
+        "cc": 452,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Himalayan 411",
+        "cc": 411,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Himalayan 450",
+        "cc": 452,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Hunter 350",
+        "cc": 349,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Interceptor 650",
+        "cc": 648,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Meteor 350",
+        "cc": 349,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Scram 411",
+        "cc": 411,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Shotgun 650",
+        "cc": 648,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Super Meteor 650",
+        "cc": 648,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Thunderbird 350",
+        "cc": 346,
+        "transmission": "manual",
+        "status": "discontinued",
+        "cooling": "air"
+      },
+      {
+        "name": "Thunderbird 500",
+        "cc": 499,
+        "transmission": "manual",
+        "status": "discontinued",
+        "cooling": "air"
+      }
     ]
   },
   {
-    maker: "Piaggio/Vespa",
-    company: "Piaggio & C. S.p.A.",
-    country: "Italy",
-    models: [
-      ["Vespa Primavera 50", 50, "cvt", "current"], ["Vespa Primavera 125", 125, "cvt", "current"], ["Vespa Primavera 150", 150, "cvt", "current"],
-      ["Vespa Sprint 125", 125, "cvt", "current"], ["Vespa Sprint 150", 150, "cvt", "current"], ["Vespa GTS 125", 125, "cvt", "current"],
-      ["Vespa GTS 250", 244, "cvt", "discontinued"], ["Vespa GTS 300", 278, "cvt", "current"], ["Vespa PX 125", 125, "manual", "discontinued"],
-      ["Piaggio Beverly 300", 278, "cvt", "current"], ["Piaggio MP3 300", 278, "cvt", "current"], ["Piaggio MP3 500", 493, "cvt", "discontinued"]
+    "maker": "Piaggio/Vespa",
+    "company": "Piaggio & C. S.p.A.",
+    "country": "Italy",
+    "models": [
+      {
+        "name": "Piaggio Beverly 300",
+        "cc": 278,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Piaggio Beverly 400",
+        "cc": 399,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Piaggio Liberty 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Piaggio Liberty 150",
+        "cc": 150,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Piaggio Medley 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Piaggio Medley 150",
+        "cc": 150,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Piaggio MP3 300",
+        "cc": 278,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Piaggio MP3 500",
+        "cc": 493,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "Piaggio Typhoon 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "discontinued",
+        "cooling": "air"
+      },
+      {
+        "name": "Vespa Elettrica",
+        "cc": 0,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Vespa GTS 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Vespa GTS 250",
+        "cc": 244,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "Vespa GTS 300",
+        "cc": 278,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Vespa Primavera 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Vespa Primavera 150",
+        "cc": 150,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Vespa Primavera 50",
+        "cc": 50,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Vespa PX 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Vespa Sprint 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Vespa Sprint 150",
+        "cc": 150,
+        "transmission": "cvt",
+        "status": "current"
+      }
     ]
   },
   {
-    maker: "Kymco",
-    company: "Kwang Yang Motor Co., Ltd.",
-    country: "Taiwan",
-    models: [
-      ["Many 110", 110, "cvt", "current"], ["Racing 125", 125, "cvt", "current"], ["Racing S 125", 125, "cvt", "current"],
-      ["Downtown 125", 125, "cvt", "current"], ["Downtown 300i", 299, "cvt", "discontinued"], ["Downtown 350i", 321, "cvt", "current"],
-      ["X-Town 300", 276, "cvt", "current"], ["AK550", 550, "cvt", "current"], ["Like 125", 125, "cvt", "current"],
-      ["People 125", 125, "cvt", "current"], ["Super 8 125", 125, "cvt", "discontinued"]
+    "maker": "Kymco",
+    "company": "Kwang Yang Motor Co., Ltd.",
+    "country": "Taiwan",
+    "models": [
+      {
+        "name": "Agility 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Agility 50",
+        "cc": 50,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "AK550",
+        "cc": 550,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Dink R 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Dink R 150",
+        "cc": 150,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Downtown 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Downtown 300i",
+        "cc": 299,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "Downtown 350i",
+        "cc": 321,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "KRV 180",
+        "cc": 175,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Like 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Many 110",
+        "cc": 110,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "People 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "People S 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "People S 200",
+        "cc": 163,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Racing 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Racing S 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Super 8 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "X-Town 300",
+        "cc": 276,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Xciting 400",
+        "cc": 400,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      }
     ]
   },
   {
-    maker: "SYM",
-    company: "Sanyang Motor Co., Ltd.",
-    country: "Taiwan",
-    models: [
-      ["Jet 14 125", 125, "cvt", "current"], ["Jet X 125", 125, "cvt", "current"], ["Cruisym 125", 125, "cvt", "current"],
-      ["Cruisym 300", 278, "cvt", "current"], ["Joymax 300", 278, "cvt", "discontinued"], ["Maxsym 400", 399, "cvt", "current"],
-      ["Maxsym TL 500", 465, "cvt", "current"], ["Fiddle 125", 125, "cvt", "current"], ["Wolf 125", 125, "manual", "discontinued"],
-      ["NH-T 125", 125, "manual", "current"]
+    "maker": "SYM",
+    "company": "Sanyang Motor Co., Ltd.",
+    "country": "Taiwan",
+    "models": [
+      {
+        "name": "ADX 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "ADX 300",
+        "cc": 278,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Cruisym 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Cruisym 300",
+        "cc": 278,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "DRGBT 160",
+        "cc": 158,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Fiddle 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Jet 14 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Jet 4 RX 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Jet X 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Joymax 300",
+        "cc": 278,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "Joyride 300",
+        "cc": 278,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Maxsym 400",
+        "cc": 399,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Maxsym TL 500",
+        "cc": 465,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Maxsym TL 508",
+        "cc": 508,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "NH-T 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "NH-X 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Wolf 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "discontinued"
+      }
     ]
   },
   {
-    maker: "Daelim",
-    company: "Daelim Motor Company",
-    country: "South Korea",
-    models: [
-      ["Citi Ace 110", 110, "manual", "current"], ["Daystar 125", 125, "manual", "current"], ["Roadwin 125", 125, "manual", "discontinued"],
-      ["Roadwin 250", 250, "manual", "discontinued"], ["VJF125", 125, "manual", "discontinued"], ["VJF250", 250, "manual", "discontinued"],
-      ["Q2 125", 125, "cvt", "discontinued"], ["Q3 250", 250, "cvt", "discontinued"], ["Besbi 125", 125, "cvt", "discontinued"],
-      ["Dart 125", 125, "cvt", "current"], ["XQ125", 125, "cvt", "current"], ["XQ250", 250, "cvt", "current"]
+    "maker": "Daelim",
+    "company": "Daelim Motor Company",
+    "country": "South Korea",
+    "models": [
+      {
+        "name": "Besbi 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "Citi Ace 100",
+        "cc": 100,
+        "transmission": "manual",
+        "status": "discontinued",
+        "cooling": "air"
+      },
+      {
+        "name": "Citi Ace 110",
+        "cc": 110,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Dart 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "Daystar 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Q2 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "Q3 250",
+        "cc": 250,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "Roadwin 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Roadwin 250",
+        "cc": 250,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "S2 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "discontinued",
+        "cooling": "air"
+      },
+      {
+        "name": "S3 250",
+        "cc": 250,
+        "transmission": "cvt",
+        "status": "discontinued",
+        "cooling": "liquid"
+      },
+      {
+        "name": "VJF125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "VJF250",
+        "cc": 250,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "VS125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "discontinued",
+        "cooling": "air"
+      },
+      {
+        "name": "VT125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "discontinued",
+        "cooling": "air"
+      },
+      {
+        "name": "XQ125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "XQ250",
+        "cc": 250,
+        "transmission": "cvt",
+        "status": "current"
+      }
     ]
   },
   {
-    maker: "Hyosung",
-    company: "KR Motors / Hyosung",
-    country: "South Korea",
-    models: [
-      ["Exiv 125", 125, "manual", "discontinued"], ["Exiv 250", 249, "manual", "discontinued"], ["GT125R", 125, "manual", "discontinued"],
-      ["GT250R", 249, "manual", "discontinued"], ["GT650R", 647, "manual", "discontinued"], ["Comet 125", 125, "manual", "discontinued"],
-      ["Comet 250", 249, "manual", "discontinued"], ["Comet 650", 647, "manual", "discontinued"], ["Mirage 125", 125, "manual", "current"],
-      ["Mirage 250", 249, "manual", "current"], ["Mirage 650", 647, "manual", "discontinued"], ["Aquila 300", 296, "manual", "current"]
+    "maker": "Hyosung",
+    "company": "KR Motors / Hyosung",
+    "country": "South Korea",
+    "models": [
+      {
+        "name": "Aquila 300",
+        "cc": 296,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Aquila GV125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "discontinued",
+        "cooling": "air"
+      },
+      {
+        "name": "Aquila GV250",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "discontinued",
+        "cooling": "air"
+      },
+      {
+        "name": "Aquila GV650",
+        "cc": 647,
+        "transmission": "manual",
+        "status": "discontinued",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Comet 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Comet 250",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Comet 650",
+        "cc": 647,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Exiv 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Exiv 250",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "GD250N",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "discontinued",
+        "cooling": "liquid"
+      },
+      {
+        "name": "GD250R",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "discontinued",
+        "cooling": "liquid"
+      },
+      {
+        "name": "GT125R",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "GT250R",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "GT650R",
+        "cc": 647,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Mirage 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Mirage 250",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Mirage 650",
+        "cc": 647,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "RT125D",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "discontinued",
+        "cooling": "air"
+      }
     ]
   },
   {
-    maker: "Aprilia",
-    company: "Aprilia",
-    country: "Italy",
-    models: [
-      ["SR 50", 50, "cvt", "discontinued"], ["SR GT 125", 125, "cvt", "current"], ["SR GT 200", 174, "cvt", "current"],
-      ["RS 125", 125, "manual", "current"], ["RS 250", 249, "manual", "discontinued"], ["RS 457", 457, "manual", "current"],
-      ["RS 660", 659, "manual", "current"], ["RSV4", 1099, "manual", "current"], ["Tuono 125", 125, "manual", "current"],
-      ["Tuono 660", 659, "manual", "current"], ["Tuono V4", 1077, "manual", "current"], ["Dorsoduro 750", 749, "manual", "discontinued"],
-      ["Shiver 750", 749, "manual", "discontinued"], ["Caponord 1200", 1197, "manual", "discontinued"]
+    "maker": "Aprilia",
+    "company": "Aprilia",
+    "country": "Italy",
+    "models": [
+      {
+        "name": "Caponord 1200",
+        "cc": 1197,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Dorsoduro 750",
+        "cc": 749,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Dorsoduro 900",
+        "cc": 896,
+        "transmission": "manual",
+        "status": "discontinued",
+        "cooling": "liquid"
+      },
+      {
+        "name": "RS 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "RS 250",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "RS 457",
+        "cc": 457,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "RS 660",
+        "cc": 659,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "RS 660 Extrema",
+        "cc": 659,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "RS 660 Factory",
+        "cc": 659,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "RSV4",
+        "cc": 1099,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "RX 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Shiver 750",
+        "cc": 749,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Shiver 900",
+        "cc": 896,
+        "transmission": "manual",
+        "status": "discontinued",
+        "cooling": "liquid"
+      },
+      {
+        "name": "SR 50",
+        "cc": 50,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "SR GT 125",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "SR GT 200",
+        "cc": 174,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "SX 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Tuareg 660",
+        "cc": 659,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Tuono 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Tuono 660",
+        "cc": 659,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Tuono V4",
+        "cc": 1077,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Tuono V4 Factory",
+        "cc": 1077,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      }
     ]
   },
   {
-    maker: "Indian Motorcycle",
-    company: "Indian Motorcycle International",
-    country: "United States",
-    models: [
-      ["Scout Sixty", 999, "manual", "current"], ["Scout", 1133, "manual", "current"], ["FTR 1200", 1203, "manual", "current"],
-      ["Chief", 1811, "manual", "current"], ["Chief Bobber", 1811, "manual", "current"], ["Chieftain", 1811, "manual", "current"],
-      ["Roadmaster", 1811, "manual", "current"], ["Challenger", 1768, "manual", "current"], ["Springfield", 1811, "manual", "current"]
+    "maker": "Indian Motorcycle",
+    "company": "Indian Motorcycle International",
+    "country": "United States",
+    "models": [
+      {
+        "name": "101 Scout",
+        "cc": 1250,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Challenger",
+        "cc": 1768,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Challenger Dark Horse",
+        "cc": 1768,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Chief",
+        "cc": 1811,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Chief Bobber",
+        "cc": 1811,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Chief Dark Horse",
+        "cc": 1890,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "Chieftain",
+        "cc": 1811,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Chieftain Dark Horse",
+        "cc": 1890,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "FTR 1200",
+        "cc": 1203,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Pursuit",
+        "cc": 1768,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Roadmaster",
+        "cc": 1811,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Scout",
+        "cc": 1133,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Scout Bobber",
+        "cc": 1133,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Scout Sixty",
+        "cc": 999,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Sport Scout",
+        "cc": 1250,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Springfield",
+        "cc": 1811,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Super Scout",
+        "cc": 1250,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      }
     ]
   },
   {
-    maker: "Moto Guzzi",
-    company: "Moto Guzzi",
-    country: "Italy",
-    models: [
-      ["V7 Classic", 744, "manual", "discontinued"], ["V7 Stone", 853, "manual", "current"], ["V7 Special", 853, "manual", "current"],
-      ["V9 Bobber", 853, "manual", "current"], ["V85 TT", 853, "manual", "current"], ["V100 Mandello", 1042, "manual", "current"],
-      ["California 1400", 1380, "manual", "discontinued"], ["Griso 1200", 1151, "manual", "discontinued"]
+    "maker": "Moto Guzzi",
+    "company": "Moto Guzzi",
+    "country": "Italy",
+    "models": [
+      {
+        "name": "California 1400",
+        "cc": 1380,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Griso 1200",
+        "cc": 1151,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Stelvio",
+        "cc": 1042,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "V100 Mandello",
+        "cc": 1042,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "V100 Mandello S",
+        "cc": 1042,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "V7 Classic",
+        "cc": 744,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "V7 Special",
+        "cc": 853,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "V7 Sport",
+        "cc": 853,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "V7 Stone",
+        "cc": 853,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "V85 Strada",
+        "cc": 853,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "V85 TT",
+        "cc": 853,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "V85 TT Travel",
+        "cc": 853,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "air"
+      },
+      {
+        "name": "V9 Bobber",
+        "cc": 853,
+        "transmission": "manual",
+        "status": "current"
+      }
     ]
   },
   {
-    maker: "Husqvarna",
-    company: "Husqvarna Motorcycles",
-    country: "Austria/Sweden",
-    models: [
-      ["Svartpilen 125", 125, "manual", "current"], ["Svartpilen 250", 248, "manual", "current"], ["Svartpilen 401", 373, "manual", "current"],
-      ["Vitpilen 401", 373, "manual", "current"], ["Vitpilen 701", 692, "manual", "discontinued"], ["Norden 901", 889, "manual", "current"],
-      ["701 Supermoto", 692, "manual", "current"], ["701 Enduro", 692, "manual", "current"]
+    "maker": "Husqvarna",
+    "company": "Husqvarna Motorcycles",
+    "country": "Austria/Sweden",
+    "models": [
+      {
+        "name": "701 Enduro",
+        "cc": 692,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "701 Supermoto",
+        "cc": 692,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "FC 250",
+        "cc": 250,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "FC 450",
+        "cc": 450,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Norden 901",
+        "cc": 889,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Svartpilen 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Svartpilen 250",
+        "cc": 248,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Svartpilen 401",
+        "cc": 373,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Svartpilen 801",
+        "cc": 799,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "TC 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "TE 300",
+        "cc": 300,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Vitpilen 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Vitpilen 250",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "Vitpilen 401",
+        "cc": 373,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Vitpilen 701",
+        "cc": 692,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Vitpilen 801",
+        "cc": 799,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      }
     ]
   },
   {
-    maker: "Zontes",
-    company: "Guangdong Tayo Motorcycle Technology Co., Ltd.",
-    country: "China",
-    models: [
-      ["ZT125-G1", 125, "manual", "current"], ["ZT125-U", 125, "manual", "current"], ["ZT125-U1", 125, "manual", "current"],
-      ["ZT125-GK", 125, "manual", "current"], ["ZT125-M", 125, "cvt", "current"], ["ZT125-Z2", 125, "manual", "current"],
-      ["150D", 150, "cvt", "current"], ["150M", 150, "cvt", "current"], ["150V", 150, "manual", "current"],
-      ["150X", 150, "manual", "current"], ["175V", 175, "manual", "current"], ["ZT250", 250, "manual", "discontinued"],
-      ["310M", 310, "cvt", "discontinued"], ["310R", 310, "manual", "discontinued"], ["310T", 310, "manual", "discontinued"],
-      ["310V", 310, "manual", "discontinued"], ["310X", 310, "manual", "discontinued"], ["350D", 350, "cvt", "current"],
-      ["350E", 350, "cvt", "current"], ["350M", 350, "cvt", "current"], ["350R", 350, "manual", "current"],
-      ["350S", 350, "manual", "current"], ["350T", 350, "manual", "current"], ["350X", 350, "manual", "current"],
-      ["350V", 350, "manual", "current"], ["GK350", 350, "manual", "current"], ["368D", 368, "cvt", "current"],
-      ["368E", 368, "cvt", "current"], ["368G", 368, "cvt", "current"], ["368K", 368, "cvt", "current"],
-      ["368M", 368, "cvt", "current"], ["703F", 699, "manual", "current"], ["703R", 699, "manual", "current"],
-      ["703RR", 699, "manual", "current"], ["703T", 699, "manual", "current"]
+    "maker": "Zontes",
+    "company": "Guangdong Tayo Motorcycle Technology Co., Ltd.",
+    "country": "China",
+    "models": [
+      {
+        "name": "125D",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "125E",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "125G",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "150D",
+        "cc": 150,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "150M",
+        "cc": 150,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "150V",
+        "cc": 150,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "150X",
+        "cc": 150,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "175V",
+        "cc": 175,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "310M",
+        "cc": 310,
+        "transmission": "cvt",
+        "status": "discontinued"
+      },
+      {
+        "name": "310R",
+        "cc": 310,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "310T",
+        "cc": 310,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "310V",
+        "cc": 310,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "310X",
+        "cc": 310,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "350D",
+        "cc": 350,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "350E",
+        "cc": 350,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "350GK",
+        "cc": 350,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "350M",
+        "cc": 350,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "350R",
+        "cc": 350,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "350S",
+        "cc": 350,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "350T",
+        "cc": 350,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "350T2",
+        "cc": 350,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "350V",
+        "cc": 350,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "350X",
+        "cc": 350,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "368D",
+        "cc": 368,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "368E",
+        "cc": 368,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "368F",
+        "cc": 368,
+        "transmission": "cvt",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "368G",
+        "cc": 368,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "368K",
+        "cc": 368,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "368M",
+        "cc": 368,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "703F",
+        "cc": 699,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "703F Adventure",
+        "cc": 699,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "703R",
+        "cc": 699,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "703RR",
+        "cc": 699,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "703T",
+        "cc": 699,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "GK350",
+        "cc": 350,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "ZT125-G1",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "ZT125-GK",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "ZT125-M",
+        "cc": 125,
+        "transmission": "cvt",
+        "status": "current"
+      },
+      {
+        "name": "ZT125-U",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "ZT125-U1",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "ZT125-Z2",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "ZT250",
+        "cc": 250,
+        "transmission": "manual",
+        "status": "discontinued"
+      }
     ]
   },
   {
-    maker: "Benelli",
-    company: "Benelli Q.J.",
-    country: "Italy/China",
-    models: [
-      ["TNT 125", 125, "manual", "current"], ["BN 125", 125, "manual", "current"], ["Leoncino 250", 249, "manual", "current"],
-      ["Leoncino 500", 500, "manual", "current"], ["TRK 251", 249, "manual", "current"], ["TRK 502", 500, "manual", "current"],
-      ["TRK 702", 698, "manual", "current"], ["Imperiale 400", 374, "manual", "current"], ["TNT 600", 600, "manual", "discontinued"]
+    "maker": "Benelli",
+    "company": "Benelli Q.J.",
+    "country": "Italy/China",
+    "models": [
+      {
+        "name": "180S",
+        "cc": 175,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "251S",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "302S",
+        "cc": 300,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "502C",
+        "cc": 500,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "752S",
+        "cc": 754,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "BN 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Imperiale 400",
+        "cc": 374,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Leoncino 250",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "Leoncino 500",
+        "cc": 500,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "TNT 125",
+        "cc": 125,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "TNT 600",
+        "cc": 600,
+        "transmission": "manual",
+        "status": "discontinued"
+      },
+      {
+        "name": "Tornado 302R",
+        "cc": 300,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "TRK 251",
+        "cc": 249,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "TRK 502",
+        "cc": 500,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "TRK 502X",
+        "cc": 500,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      },
+      {
+        "name": "TRK 702",
+        "cc": 698,
+        "transmission": "manual",
+        "status": "current"
+      },
+      {
+        "name": "TRK 702X",
+        "cc": 698,
+        "transmission": "manual",
+        "status": "current",
+        "cooling": "liquid"
+      }
     ]
   }
-].map((brand) => ({
-  ...brand,
-  models: brand.models.map(([name, cc, transmission, status, cooling]) => ({ name, cc, transmission, status, cooling }))
-}));
+];

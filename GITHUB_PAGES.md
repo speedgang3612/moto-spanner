@@ -24,6 +24,7 @@ https://speedgang3612.github.io/moto-spanner/
 - `scripts/`
 - `README.md`
 - `BRAND_OPTIONS.md`
+- `MODEL_AUDIT.md`
 
 `dist/`와 `.openai/`는 Codex Sites용 파일이라 GitHub Pages에는 필요 없습니다.
 
