@@ -425,6 +425,18 @@ label {
   color: var(--muted);
 }
 
+.due-card .due-meta {
+  display: block;
+  color: var(--muted);
+}
+
+.due-card .next-maintenance {
+  display: block;
+  margin-top: 4px;
+  color: var(--ink);
+  font-weight: 900;
+}
+
 .category-badge {
   display: inline-flex;
   width: fit-content;

@@ -470,9 +470,9 @@ function renderDueCard(due) {
   const remaining = due.last
     ? `${remainingText(due)} · 마지막 ${due.last.date} / ${km(due.last.odometer)}`
     : "아직 정비 기록이 없습니다.";
-  const detail = `${remaining}<br />${next}`;
+  const detail = `<span class="due-meta">${remaining}</span><strong class="next-maintenance">${next}</strong>`;
   return `<article class="due-card">
-    <div><small class="category-badge">${due.group}</small><strong>${due.label}</strong><span>${detail}</span></div>
+    <div><small class="category-badge">${due.group}</small><strong>${due.label}</strong>${detail}</div>
     <span class="status ${due.status}">${statusText}</span>
   </article>`;
 }
