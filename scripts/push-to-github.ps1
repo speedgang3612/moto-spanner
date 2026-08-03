@@ -55,7 +55,8 @@ $RequiredItems = @(
   "scripts",
   "README.md",
   "BRAND_OPTIONS.md",
-  "GITHUB_PAGES.md"
+  "GITHUB_PAGES.md",
+  "MAINTENANCE_CATEGORIES.md"
 )
 
 if (Test-Path $PublishDir) {

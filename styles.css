@@ -299,9 +299,22 @@ label {
 
 .quick-history-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: 1fr;
   gap: 10px;
   margin-bottom: 14px;
+}
+
+.quick-history-group,
+.interval-group {
+  display: grid;
+  gap: 8px;
+}
+
+.quick-history-group h3,
+.interval-group h3 {
+  margin: 4px 0 0;
+  font-size: 13px;
+  color: var(--muted);
 }
 
 .quick-history-row {
@@ -344,6 +357,19 @@ label {
 
 .due-card span {
   color: var(--muted);
+}
+
+.category-badge {
+  display: inline-flex;
+  width: fit-content;
+  margin-bottom: 6px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface-2);
+  color: var(--muted);
+  padding: 3px 8px;
+  font-size: 12px;
+  font-weight: 800;
 }
 
 .status {
