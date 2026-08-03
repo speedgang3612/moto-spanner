@@ -1,0 +1,261 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Moto Spanner MVP</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <img class="brand-logo" src="assets/moto-spanner-logo.png" alt="Moto Spanner 로고" />
+          <div>
+            <strong>Moto Spanner</strong>
+            <span>모토스패너 · 오토바이 정비 차계부</span>
+          </div>
+        </div>
+        <nav class="nav-tabs" aria-label="주요 화면">
+          <button class="nav-tab active" data-view="dashboard">대시보드</button>
+          <button class="nav-tab" data-view="garage">내 바이크</button>
+          <button class="nav-tab" data-view="fuel">주유</button>
+          <button class="nav-tab" data-view="maintenance">정비</button>
+          <button class="nav-tab" data-view="odometer">계기판 사진</button>
+          <button class="nav-tab" data-view="backup">백업</button>
+        </nav>
+      </aside>
+
+      <main class="main">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">Odometer Maintenance Assistant</p>
+            <h1>주행거리 기반 정비 알림</h1>
+          </div>
+          <label class="bike-picker">
+            <span>선택된 바이크</span>
+            <select id="activeBikeSelect"></select>
+          </label>
+        </header>
+
+        <section id="dashboard" class="view active">
+          <div class="notice-strip">
+            <article>
+              <strong>개인정보</strong>
+              <span>기록은 현재 브라우저에 저장되며 서버로 전송되지 않습니다.</span>
+            </article>
+            <article>
+              <strong>정비 기준</strong>
+              <span>앱의 주기는 참고용이며 제조사 매뉴얼과 정비소 판단을 우선하세요.</span>
+            </article>
+            <article>
+              <strong>백업</strong>
+              <span>기기 변경 전 JSON 백업을 내려받아 보관하세요.</span>
+            </article>
+          </div>
+          <div class="metric-grid">
+            <article class="metric">
+              <span>현재 총 주행거리</span>
+              <strong id="metricOdo">0 km</strong>
+            </article>
+            <article class="metric">
+              <span>이번 달 지출</span>
+              <strong id="metricMonthCost">0원</strong>
+            </article>
+            <article class="metric">
+              <span>평균 연비</span>
+              <strong id="metricFuelEfficiency">-</strong>
+            </article>
+            <article class="metric">
+              <span>주의 정비 항목</span>
+              <strong id="metricDueCount">0개</strong>
+            </article>
+          </div>
+
+          <div class="content-grid">
+            <section class="panel">
+              <div class="panel-header">
+                <h2>정비 예정</h2>
+                <div class="panel-actions">
+                  <span id="maintenanceProfileName"></span>
+                  <button id="enableMaintenanceAlerts" type="button">알림 켜기</button>
+                </div>
+              </div>
+              <p class="hint" id="alertStatus">정비 기록을 저장하면 해당 항목의 마지막 정비 기준점으로 사용됩니다.</p>
+              <div id="dueList" class="due-list"></div>
+            </section>
+            <section class="panel">
+              <div class="panel-header">
+                <h2>최근 기록</h2>
+              </div>
+              <div id="recentList" class="timeline"></div>
+            </section>
+          </div>
+        </section>
+
+        <section id="garage" class="view">
+          <div class="content-grid">
+            <form id="bikeForm" class="panel form-panel">
+              <div class="panel-header">
+                <h2>오토바이 등록</h2>
+              </div>
+              <div class="form-grid">
+                <label>제조사
+                  <select name="maker" id="makerSelect" required></select>
+                </label>
+                <label class="hidden" id="customMakerWrap">제조사 직접 입력<input name="customMaker" id="customMakerInput" placeholder="예: Zontes" /></label>
+                <label>모델 검색<input id="modelSearch" placeholder="PCX, Ninja, R1250GS..." /></label>
+                <label>모델명
+                  <select name="model" id="modelSelect" required></select>
+                </label>
+                <label class="hidden" id="customModelWrap">모델 직접 입력<input name="customModel" id="customModelInput" placeholder="예: 350T" /></label>
+                <label>연식<input name="year" type="number" min="1980" max="2035" placeholder="2024" /></label>
+                <label>배기량 cc<input name="cc" type="number" min="0" max="2500" required placeholder="125" /></label>
+                <label>현재 총 주행거리<input name="odometer" type="number" min="0" required placeholder="12345" /></label>
+                <label>변속 방식
+                  <select name="transmission">
+                    <option value="cvt">스쿠터/CVT</option>
+                    <option value="manual">메뉴얼</option>
+                    <option value="dct">DCT</option>
+                  </select>
+                </label>
+                <label>냉각 방식
+                  <select name="cooling">
+                    <option value="liquid">수랭</option>
+                    <option value="air">공랭</option>
+                  </select>
+                </label>
+                <label>사용 패턴
+                  <select name="usage">
+                    <option value="commute">출퇴근</option>
+                    <option value="delivery">배달/시내주행 많음</option>
+                    <option value="touring">투어링</option>
+                    <option value="sport">스포츠/고회전</option>
+                  </select>
+                </label>
+              </div>
+              <p class="hint" id="modelMeta">제조사/모델 목록에 없으면 직접 입력할 수 있고 다음 등록 때 다시 표시됩니다.</p>
+              <button class="primary" type="submit">바이크 추가</button>
+            </form>
+
+            <section class="panel">
+              <div class="panel-header">
+                <h2>등록된 바이크</h2>
+              </div>
+              <div id="bikeList" class="bike-list"></div>
+            </section>
+          </div>
+        </section>
+
+        <section id="fuel" class="view">
+          <form id="fuelForm" class="panel form-panel">
+            <div class="panel-header">
+              <h2>주유 기록</h2>
+            </div>
+            <div class="form-grid">
+              <label>날짜<input name="date" type="date" required /></label>
+              <label>총 주행거리<input name="odometer" type="number" min="0" required /></label>
+              <label>주유량 L<input name="liters" type="number" min="0" step="0.01" required /></label>
+              <label>금액<input name="cost" type="number" min="0" required /></label>
+              <label>주유소<input name="station" placeholder="선택 입력" /></label>
+              <label>메모<input name="memo" placeholder="고급유, 만땅 등" /></label>
+            </div>
+            <button class="primary" type="submit">주유 기록 저장</button>
+          </form>
+        </section>
+
+        <section id="maintenance" class="view">
+          <div class="content-grid">
+            <form id="maintenanceForm" class="panel form-panel">
+              <div class="panel-header">
+                <h2>정비 기록</h2>
+              </div>
+              <div class="form-grid">
+                <label>날짜<input name="date" type="date" required /></label>
+                <label>항목
+                  <select name="item" id="maintenanceItemSelect"></select>
+                </label>
+                <label>총 주행거리<input name="odometer" type="number" min="0" required /></label>
+                <label>금액<input name="cost" type="number" min="0" placeholder="0" /></label>
+                <label>정비소<input name="shop" placeholder="선택 입력" /></label>
+                <label>메모<input name="memo" placeholder="부품명, 점검 결과 등" /></label>
+              </div>
+              <button class="primary" type="submit">정비 완료 저장</button>
+            </form>
+
+            <section class="panel">
+              <div class="panel-header">
+                <h2>정비 주기 설정</h2>
+              </div>
+              <div id="intervalEditor" class="interval-editor"></div>
+            </section>
+          </div>
+        </section>
+
+        <section id="odometer" class="view">
+          <div class="content-grid">
+            <section class="panel form-panel">
+              <div class="panel-header">
+                <h2>실시간 계기판 인식</h2>
+              </div>
+              <div class="camera-box">
+                <video id="cameraStream" autoplay playsinline muted></video>
+                <canvas id="cameraCanvas"></canvas>
+                <img id="photoPreview" alt="계기판 촬영 미리보기" />
+                <div class="camera-actions">
+                  <button id="startCamera" type="button">카메라 켜기</button>
+                  <button id="captureDash" class="primary" type="button">계기판 촬영</button>
+                  <button id="stopCamera" type="button">카메라 끄기</button>
+                </div>
+              </div>
+              <p class="hint" id="cameraStatus">카메라 권한은 계기판 촬영에만 사용됩니다. 촬영 이미지는 서버로 전송되지 않습니다.</p>
+              <form id="odometerForm" class="stacked-form">
+                <label>인식/확인한 총 주행거리<input name="odometer" type="number" min="0" required /></label>
+                <label>트립 주행거리<input name="trip" type="number" min="0" step="0.1" /></label>
+                <label>메모<input name="memo" placeholder="야간 촬영, ODO/TRIP A 등" /></label>
+                <button class="primary" type="submit">주행거리 반영 및 정비 확인</button>
+              </form>
+              <div id="instantDiagnosis" class="instant-diagnosis"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <h2>주행거리 히스토리</h2>
+              </div>
+              <div id="odoHistory" class="timeline"></div>
+            </section>
+          </div>
+        </section>
+
+        <section id="backup" class="view">
+          <section class="panel backup-panel">
+            <div class="panel-header">
+              <h2>백업/내보내기</h2>
+            </div>
+            <div class="backup-actions">
+              <button class="primary" id="exportJson">JSON 백업</button>
+              <button id="exportCsv">CSV 내보내기</button>
+              <label class="import-button">
+                JSON 가져오기
+                <input id="importJson" type="file" accept="application/json" />
+              </label>
+            </div>
+            <p class="hint">데이터는 현재 브라우저의 로컬 저장소에 저장됩니다. 파일 백업을 내려받아두면 다른 기기에서 가져올 수 있습니다.</p>
+            <div class="notice-strip compact">
+              <article>
+                <strong>백업 안내</strong>
+                <span>JSON은 전체 복원용, CSV는 엑셀/공유용 기록 파일입니다.</span>
+              </article>
+              <article>
+                <strong>데이터 안내</strong>
+                <span>브라우저 캐시/사이트 데이터 삭제 시 기록이 사라질 수 있습니다.</span>
+              </article>
+            </div>
+          </section>
+        </section>
+      </main>
+    </div>
+    <script src="motorcycle-data.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
