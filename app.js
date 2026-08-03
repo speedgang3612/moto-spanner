@@ -32,27 +32,10 @@ const money = (value) => `${Math.round(value || 0).toLocaleString("ko-KR")}원`;
 const km = (value) => `${Math.round(value || 0).toLocaleString("ko-KR")} km`;
 
 const defaultState = {
-  activeBikeId: "bike-demo",
-  bikes: [
-    {
-      id: "bike-demo",
-      maker: "Honda",
-      model: "PCX 125",
-      year: 2024,
-      cc: 125,
-      odometer: 18420,
-      transmission: "cvt",
-      cooling: "liquid",
-      usage: "commute",
-      intervals: {}
-    }
-  ],
-  fuelLogs: [
-    { id: "fuel-1", bikeId: "bike-demo", date: today(), odometer: 18420, liters: 6.2, cost: 10500, station: "동네 주유소", memo: "만땅" }
-  ],
-  maintenanceLogs: [
-    { id: "maint-1", bikeId: "bike-demo", date: "2026-07-15", item: "engineOil", odometer: 16900, cost: 25000, shop: "셀프", memo: "10W-40" }
-  ],
+  activeBikeId: "",
+  bikes: [],
+  fuelLogs: [],
+  maintenanceLogs: [],
   odometerLogs: [],
   customModels: [],
   notificationSettings: {
@@ -96,6 +79,10 @@ function id(prefix) {
 
 function getBike() {
   return state.bikes.find((bike) => bike.id === state.activeBikeId) || state.bikes[0];
+}
+
+function hasBike() {
+  return Boolean(getBike());
 }
 
 function buildIntervals(bike) {
@@ -288,7 +275,11 @@ function inferCoolingForModel(brand, model) {
 
 function render() {
   const bike = getBike();
-  if (!bike) return;
+  if (!bike) {
+    saveState();
+    renderEmptyState();
+    return;
+  }
   bike.intervals = bike.intervals || buildIntervals(bike);
   saveState();
   renderBikePicker(bike);
@@ -301,10 +292,35 @@ function render() {
   maybeSendMaintenanceNotification(bike);
 }
 
+function renderEmptyState() {
+  renderBikePicker();
+  document.querySelector("#metricOdo").textContent = "0 km";
+  document.querySelector("#metricMonthCost").textContent = "0원";
+  document.querySelector("#metricFuelEfficiency").textContent = "-";
+  document.querySelector("#metricDueCount").textContent = "0개";
+  document.querySelector("#maintenanceProfileName").textContent = "바이크를 먼저 등록해 주세요.";
+  document.querySelector("#dueList").innerHTML = `<div class="empty">아직 등록된 오토바이가 없습니다. 내 바이크 화면에서 첫 오토바이를 등록하면 정비 예정표가 생성됩니다.</div>`;
+  document.querySelector("#recentList").innerHTML = `<div class="empty">아직 기록이 없습니다.</div>`;
+  document.querySelector("#bikeList").innerHTML = `<div class="empty">등록된 바이크가 없습니다.</div>`;
+  document.querySelector("#maintenanceItemSelect").innerHTML = "";
+  document.querySelector("#intervalEditor").innerHTML = `<div class="empty">바이크를 등록하면 사용 패턴별 정비 주기를 설정할 수 있습니다.</div>`;
+  document.querySelector("#odoHistory").innerHTML = `<div class="empty">계기판 기록이 없습니다.</div>`;
+  document.querySelector("#quickHistoryGrid").innerHTML = `<div class="empty">바이크를 등록하면 최근 정비 이력을 입력할 수 있습니다.</div>`;
+  document.querySelector("#instantDiagnosis").innerHTML = "";
+  renderAlertStatus();
+}
+
 function renderBikePicker(activeBike) {
   const select = document.querySelector("#activeBikeSelect");
+  if (!state.bikes.length) {
+    select.innerHTML = `<option value="">등록된 바이크 없음</option>`;
+    select.value = "";
+    select.disabled = true;
+    return;
+  }
+  select.disabled = false;
   select.innerHTML = state.bikes.map((bike) => `<option value="${bike.id}">${bike.maker} ${bike.model}</option>`).join("");
-  select.value = activeBike.id;
+  select.value = activeBike?.id || state.activeBikeId;
 }
 
 function renderDashboard(bike) {
@@ -375,9 +391,16 @@ function renderRecent(bike) {
 
 function renderBikes() {
   const container = document.querySelector("#bikeList");
+  if (!state.bikes.length) {
+    container.innerHTML = `<div class="empty">등록된 바이크가 없습니다.</div>`;
+    return;
+  }
   container.innerHTML = state.bikes.map((bike) => `<article class="bike-card">
     <div><strong>${bike.maker} ${bike.model}</strong>${bike.year || "-"}년식 · ${bike.cc}cc · ${km(bike.odometer)}</div>
-    <button data-select-bike="${bike.id}">선택</button>
+    <div class="bike-actions">
+      <button data-select-bike="${bike.id}">선택</button>
+      <button data-delete-bike="${bike.id}">삭제</button>
+    </div>
   </article>`).join("");
 }
 
@@ -514,6 +537,7 @@ document.querySelector("#bikeForm").addEventListener("submit", (event) => {
 document.querySelector("#fuelForm").addEventListener("submit", (event) => {
   event.preventDefault();
   const bike = getBike();
+  if (!bike) return alert("먼저 오토바이를 등록해 주세요.");
   const data = formData(event.currentTarget);
   state.fuelLogs.push({ id: id("fuel"), bikeId: bike.id, ...data, odometer: Number(data.odometer), liters: Number(data.liters), cost: Number(data.cost) });
   updateBikeOdometer(bike.id, data.odometer);
@@ -525,6 +549,7 @@ document.querySelector("#fuelForm").addEventListener("submit", (event) => {
 document.querySelector("#maintenanceForm").addEventListener("submit", (event) => {
   event.preventDefault();
   const bike = getBike();
+  if (!bike) return alert("먼저 오토바이를 등록해 주세요.");
   const data = formData(event.currentTarget);
   state.maintenanceLogs.push({ id: id("maint"), bikeId: bike.id, ...data, odometer: Number(data.odometer), cost: Number(data.cost || 0), completed: true });
   updateBikeOdometer(bike.id, data.odometer);
@@ -554,6 +579,7 @@ document.querySelector("#odometerForm").elements.odometer.addEventListener("inpu
 document.querySelector("#odometerForm").addEventListener("submit", (event) => {
   event.preventDefault();
   const bike = getBike();
+  if (!bike) return alert("먼저 오토바이를 등록해 주세요.");
   const data = formData(event.currentTarget);
   state.odometerLogs.push({ id: id("odo"), bikeId: bike.id, date: today(), odometer: Number(data.odometer), trip: Number(data.trip || 0), memo: data.memo });
   updateBikeOdometer(bike.id, data.odometer);
@@ -576,6 +602,11 @@ document.querySelector("#importJson").addEventListener("change", async (event) =
 
 document.addEventListener("click", (event) => {
   const bikeId = event.target.dataset?.selectBike;
+  const deleteBikeId = event.target.dataset?.deleteBike;
+  if (deleteBikeId) {
+    deleteBike(deleteBikeId);
+    return;
+  }
   if (!bikeId) return;
   state.activeBikeId = bikeId;
   render();
@@ -589,6 +620,19 @@ function download(filename, content, type) {
   link.download = filename;
   link.click();
   URL.revokeObjectURL(url);
+}
+
+function deleteBike(bikeId) {
+  const bike = state.bikes.find((entry) => entry.id === bikeId);
+  if (!bike) return;
+  const ok = confirm(`${bike.maker} ${bike.model}와 관련 기록을 삭제할까요?`);
+  if (!ok) return;
+  state.bikes = state.bikes.filter((entry) => entry.id !== bikeId);
+  state.fuelLogs = state.fuelLogs.filter((entry) => entry.bikeId !== bikeId);
+  state.maintenanceLogs = state.maintenanceLogs.filter((entry) => entry.bikeId !== bikeId);
+  state.odometerLogs = state.odometerLogs.filter((entry) => entry.bikeId !== bikeId);
+  state.activeBikeId = state.bikes[0]?.id || "";
+  render();
 }
 
 function toCsv() {
@@ -652,6 +696,10 @@ async function startCamera() {
 
 async function captureDashboard() {
   const status = document.querySelector("#cameraStatus");
+  if (!hasBike()) {
+    status.textContent = "먼저 오토바이를 등록해 주세요.";
+    return;
+  }
   const video = document.querySelector("#cameraStream");
   const canvas = document.querySelector("#cameraCanvas");
   const preview = document.querySelector("#photoPreview");

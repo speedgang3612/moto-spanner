@@ -381,6 +381,13 @@ label {
   gap: 12px;
 }
 
+.bike-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
 .interval-row {
   display: grid;
   grid-template-columns: 1fr 110px 110px;
