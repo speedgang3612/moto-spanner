@@ -293,6 +293,32 @@ label {
   gap: 10px;
 }
 
+.quick-history-panel {
+  margin-top: 16px;
+}
+
+.quick-history-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.quick-history-row {
+  display: grid;
+  grid-template-columns: auto 1fr 1fr;
+  gap: 10px;
+  align-items: end;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfb;
+  padding: 10px;
+}
+
+.quick-history-row label {
+  min-width: 0;
+}
+
 .due-card,
 .record,
 .bike-card,
@@ -500,6 +526,11 @@ label {
   }
 
   .camera-actions {
+    grid-template-columns: 1fr;
+  }
+
+  .quick-history-grid,
+  .quick-history-row {
     grid-template-columns: 1fr;
   }
 }

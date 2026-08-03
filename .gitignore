@@ -1,0 +1,6 @@
+.openai/
+dist/
+github-pages-package/
+.github-publish/
+moto-spanner-github-pages/
+*.zip

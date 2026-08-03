@@ -20,6 +20,13 @@ const maintenanceCatalog = {
 const motorcycleDatabase = window.MOTORCYCLE_DATABASE || [];
 const CUSTOM_MAKER_VALUE = "__custom_maker__";
 const CUSTOM_MODEL_VALUE = "__custom_model__";
+const usageProfiles = {
+  commute: { label: "출퇴근", kmFactor: 1, monthFactor: 1, chainLubeKm: 800, description: "일반 주행 기준" },
+  delivery: { label: "배달/시내", kmFactor: 0.65, monthFactor: 0.8, chainLubeKm: 500, description: "정차/출발과 저속 주행이 많아 짧게 관리" },
+  touring: { label: "투어링", kmFactor: 1.15, monthFactor: 1, chainLubeKm: 900, description: "장거리 정속 주행 기준" },
+  sport: { label: "스포츠", kmFactor: 0.7, monthFactor: 0.75, chainLubeKm: 600, description: "고회전/고부하 주행 기준" }
+};
+const quickHistoryItems = ["engineOil", "oilFilter", "airFilter", "brakePads", "brakeFluid", "tire", "chainLube", "gearOil", "driveBelt"];
 const today = () => new Date().toISOString().slice(0, 10);
 const money = (value) => `${Math.round(value || 0).toLocaleString("ko-KR")}원`;
 const km = (value) => `${Math.round(value || 0).toLocaleString("ko-KR")} km`;
@@ -95,27 +102,29 @@ function buildIntervals(bike) {
   const cc = Number(bike.cc);
   const isSmall = cc <= 150;
   const isMiddle = cc > 150 && cc <= 500;
-  const usageFactor = bike.usage === "delivery" || bike.usage === "sport" ? 0.75 : bike.usage === "touring" ? 1.15 : 1;
+  const profile = usageProfiles[bike.usage] || usageProfiles.commute;
+  const usageFactor = profile.kmFactor;
+  const monthFactor = profile.monthFactor;
   const oilBase = isSmall ? 1800 : isMiddle ? 3500 : 5000;
   const template = {
-    engineOil: { km: Math.round(oilBase * usageFactor), months: 6 },
-    oilFilter: { km: Math.round(oilBase * 2 * usageFactor), months: 12 },
-    airFilter: { km: Math.round((isSmall ? 8000 : 12000) * usageFactor), months: 18 },
-    sparkPlug: { km: Math.round((isSmall ? 8000 : 12000) * usageFactor), months: 24 },
-    brakePads: { km: Math.round((isSmall ? 9000 : 12000) * usageFactor), months: 24 },
-    brakeFluid: { km: 0, months: 24 },
-    tire: { km: isSmall ? 12000 : 10000, months: 48 },
-    battery: { km: 0, months: 36 }
+    engineOil: { km: Math.round(oilBase * usageFactor), months: Math.max(3, Math.round(6 * monthFactor)) },
+    oilFilter: { km: Math.round(oilBase * 2 * usageFactor), months: Math.max(6, Math.round(12 * monthFactor)) },
+    airFilter: { km: Math.round((isSmall ? 8000 : 12000) * usageFactor), months: Math.max(9, Math.round(18 * monthFactor)) },
+    sparkPlug: { km: Math.round((isSmall ? 8000 : 12000) * usageFactor), months: Math.max(12, Math.round(24 * monthFactor)) },
+    brakePads: { km: Math.round((isSmall ? 9000 : 12000) * usageFactor), months: Math.max(12, Math.round(24 * monthFactor)) },
+    brakeFluid: { km: 0, months: Math.max(12, Math.round(24 * monthFactor)) },
+    tire: { km: Math.round((isSmall ? 12000 : 10000) * usageFactor), months: Math.max(24, Math.round(48 * monthFactor)) },
+    battery: { km: 0, months: Math.max(24, Math.round(36 * monthFactor)) }
   };
 
-  if (bike.cooling === "liquid") template.coolant = { km: 0, months: 24 };
+  if (bike.cooling === "liquid") template.coolant = { km: 0, months: Math.max(12, Math.round(24 * monthFactor)) };
   if (bike.transmission === "cvt") {
-    template.gearOil = { km: isSmall ? 6000 : 10000, months: 12 };
-    template.driveBelt = { km: isSmall ? 20000 : 25000, months: 36 };
-    template.roller = { km: isSmall ? 12000 : 16000, months: 24 };
+    template.gearOil = { km: Math.round((isSmall ? 6000 : 10000) * usageFactor), months: Math.max(6, Math.round(12 * monthFactor)) };
+    template.driveBelt = { km: Math.round((isSmall ? 20000 : 25000) * usageFactor), months: Math.max(24, Math.round(36 * monthFactor)) };
+    template.roller = { km: Math.round((isSmall ? 12000 : 16000) * usageFactor), months: Math.max(12, Math.round(24 * monthFactor)) };
   } else {
-    template.chainLube = { km: bike.usage === "delivery" ? 500 : 800, months: 1 };
-    template.chainSet = { km: bike.usage === "sport" ? 15000 : 22000, months: 48 };
+    template.chainLube = { km: profile.chainLubeKm, months: 1 };
+    template.chainSet = { km: Math.round(22000 * usageFactor), months: Math.max(24, Math.round(48 * monthFactor)) };
   }
 
   return { ...template, ...(bike.intervals || {}) };
@@ -287,6 +296,7 @@ function render() {
   renderBikes();
   renderMaintenanceControls(bike);
   renderOdoHistory(bike);
+  renderQuickHistory(bike);
   renderAlertStatus();
   maybeSendMaintenanceNotification(bike);
 }
@@ -309,7 +319,8 @@ function renderDashboard(bike) {
   document.querySelector("#metricMonthCost").textContent = money(monthCost);
   document.querySelector("#metricFuelEfficiency").textContent = efficiency ? `${efficiency.toFixed(1)} km/L` : "-";
   document.querySelector("#metricDueCount").textContent = `${due.filter((item) => item.status !== "ok").length}개`;
-  document.querySelector("#maintenanceProfileName").textContent = `${bike.cc}cc · ${labelFor(bike.transmission)} · ${labelFor(bike.usage)}`;
+  const profile = usageProfiles[bike.usage] || usageProfiles.commute;
+  document.querySelector("#maintenanceProfileName").textContent = `${bike.cc}cc · ${labelFor(bike.transmission)} · ${profile.label} · ${profile.description}`;
 
   document.querySelector("#dueList").innerHTML = due.map(renderDueCard).join("");
   document.querySelector("#recentList").innerHTML = renderRecent(bike);
@@ -378,6 +389,18 @@ function renderMaintenanceControls(bike) {
     <strong>${maintenanceCatalog[item]}</strong>
     <label>km<input data-interval="${item}" data-field="km" type="number" min="0" value="${interval.km || 0}" /></label>
     <label>개월<input data-interval="${item}" data-field="months" type="number" min="0" value="${interval.months || 0}" /></label>
+  </div>`).join("");
+}
+
+function renderQuickHistory(bike) {
+  const container = document.querySelector("#quickHistoryGrid");
+  if (!container || !bike) return;
+  const intervals = buildIntervals(bike);
+  const items = quickHistoryItems.filter((item) => intervals[item]);
+  container.innerHTML = items.map((item) => `<div class="quick-history-row">
+    <label><input type="checkbox" data-history-check="${item}" /> ${maintenanceCatalog[item]}</label>
+    <label>마지막 날짜<input type="date" data-history-date="${item}" value="${today()}" /></label>
+    <label>마지막 km<input type="number" min="0" data-history-odo="${item}" value="${bike.odometer || 0}" /></label>
   </div>`).join("");
 }
 
@@ -450,6 +473,7 @@ document.querySelector("#modelSearch").addEventListener("input", renderModelSele
 document.querySelector("#modelSelect").addEventListener("change", applySelectedModel);
 
 document.querySelector("#enableMaintenanceAlerts").addEventListener("click", enableMaintenanceAlerts);
+document.querySelector("#saveQuickHistory").addEventListener("click", saveQuickHistory);
 
 document.querySelector("#bikeForm").addEventListener("submit", (event) => {
   event.preventDefault();
@@ -575,6 +599,34 @@ function toCsv() {
     for (const log of state.odometerLogs.filter((entry) => entry.bikeId === bike.id)) rows.push(["odometer", `${bike.maker} ${bike.model}`, log.date, log.odometer, "", "", "", log.memo || ""]);
   }
   return rows.map((row) => row.map((cell) => `"${String(cell).replaceAll('"', '""')}"`).join(",")).join("\n");
+}
+
+function saveQuickHistory() {
+  const bike = getBike();
+  if (!bike) return;
+  const checks = [...document.querySelectorAll("[data-history-check]")].filter((input) => input.checked);
+  if (!checks.length) {
+    alert("저장할 정비 항목을 선택해 주세요.");
+    return;
+  }
+  for (const check of checks) {
+    const item = check.dataset.historyCheck;
+    const date = document.querySelector(`[data-history-date="${item}"]`)?.value || today();
+    const odometer = Number(document.querySelector(`[data-history-odo="${item}"]`)?.value || bike.odometer || 0);
+    state.maintenanceLogs.push({
+      id: id("maint"),
+      bikeId: bike.id,
+      date,
+      item,
+      odometer,
+      cost: 0,
+      shop: "초기 이력",
+      memo: "최근 정비 이력 빠른 입력",
+      completed: true
+    });
+    updateBikeOdometer(bike.id, odometer);
+  }
+  render();
 }
 
 async function startCamera() {

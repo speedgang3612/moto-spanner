@@ -20,6 +20,8 @@ https://speedgang3612.github.io/moto-spanner/
 - `motorcycle-data.js`
 - `assets/`
 - `.nojekyll`
+- `.gitignore`
+- `scripts/`
 - `README.md`
 - `BRAND_OPTIONS.md`
 
@@ -38,3 +40,13 @@ https://speedgang3612.github.io/moto-spanner/
 ## 참고
 
 GitHub Pages는 정적 파일을 배포합니다. 이 MVP의 데이터는 각 사용자의 브라우저 로컬 저장소에 저장됩니다.
+
+## 이후 자동 푸시
+
+파일을 수정한 뒤 아래 PowerShell 스크립트를 실행하면 필요한 파일만 자동으로 커밋하고 GitHub에 푸시합니다.
+
+```powershell
+.\scripts\push-to-github.ps1
+```
+
+처음 실행할 때 GitHub 로그인이 필요하면 Git Credential Manager가 브라우저 인증을 띄울 수 있습니다.
