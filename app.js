@@ -6,9 +6,13 @@ const maintenanceCatalog = {
   airFilter: "에어필터",
   sparkPlug: "점화플러그",
   brakePads: "브레이크패드",
+  frontBrakePads: "앞 브레이크패드",
+  rearBrakePads: "뒤 브레이크패드",
   brakeFluid: "브레이크액",
   coolant: "냉각수",
   tire: "타이어",
+  frontTire: "앞 타이어",
+  rearTire: "뒤 타이어",
   battery: "배터리",
   chainLube: "체인 청소/윤활",
   chainSet: "체인/스프로킷",
@@ -45,9 +49,13 @@ const maintenanceMeta = {
   airFilter: { group: "engine" },
   sparkPlug: { group: "engine" },
   brakePads: { group: "brake" },
+  frontBrakePads: { group: "brake" },
+  rearBrakePads: { group: "brake" },
   brakeFluid: { group: "brake" },
   coolant: { group: "cooling" },
   tire: { group: "tire" },
+  frontTire: { group: "tire" },
+  rearTire: { group: "tire" },
   battery: { group: "electrical" },
   chainLube: { group: "drivetrainChain" },
   chainSet: { group: "drivetrainChain" },
@@ -77,7 +85,7 @@ const usageProfiles = {
   touring: { label: "투어링", kmFactor: 1.15, monthFactor: 1, chainLubeKm: 900, description: "장거리 정속 주행 기준" },
   sport: { label: "스포츠", kmFactor: 0.7, monthFactor: 0.75, chainLubeKm: 600, description: "고회전/고부하 주행 기준" }
 };
-const quickHistoryItems = ["engineOil", "oilFilter", "airFilter", "brakePads", "brakeFluid", "tire", "chainLube", "driveChain", "gearOil", "driveBelt", "roller"];
+const quickHistoryItems = ["engineOil", "oilFilter", "airFilter", "frontBrakePads", "rearBrakePads", "brakeFluid", "frontTire", "rearTire", "chainLube", "driveChain", "gearOil", "driveBelt", "roller"];
 const today = () => new Date().toISOString().slice(0, 10);
 const money = (value) => `${Math.round(value || 0).toLocaleString("ko-KR")}원`;
 const km = (value) => `${Math.round(value || 0).toLocaleString("ko-KR")} km`;
@@ -151,8 +159,12 @@ function buildIntervals(bike) {
     airFilter: { km: Math.round((isSmall ? 8000 : 12000) * usageFactor), months: Math.max(9, Math.round(18 * monthFactor)) },
     sparkPlug: { km: Math.round((isSmall ? 8000 : 12000) * usageFactor), months: Math.max(12, Math.round(24 * monthFactor)) },
     brakePads: { km: Math.round((isSmall ? 9000 : 12000) * usageFactor), months: Math.max(12, Math.round(24 * monthFactor)) },
+    frontBrakePads: { km: Math.round((isSmall ? 9000 : 12000) * usageFactor), months: Math.max(12, Math.round(24 * monthFactor)) },
+    rearBrakePads: { km: Math.round((isSmall ? 9000 : 12000) * usageFactor), months: Math.max(12, Math.round(24 * monthFactor)) },
     brakeFluid: { km: 0, months: Math.max(12, Math.round(24 * monthFactor)) },
     tire: { km: Math.round((isSmall ? 12000 : 10000) * usageFactor), months: Math.max(24, Math.round(48 * monthFactor)) },
+    frontTire: { km: Math.round((isSmall ? 12000 : 10000) * usageFactor), months: Math.max(24, Math.round(48 * monthFactor)) },
+    rearTire: { km: Math.round((isSmall ? 12000 : 10000) * usageFactor), months: Math.max(24, Math.round(48 * monthFactor)) },
     battery: { km: 0, months: Math.max(24, Math.round(36 * monthFactor)) }
   };
 
