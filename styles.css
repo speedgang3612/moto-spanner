@@ -555,20 +555,40 @@ label {
     position: sticky;
     top: 0;
     z-index: 5;
-    padding: 14px;
+    border-right: 0;
+    padding: 14px 16px 16px;
   }
 
   .brand {
     margin-bottom: 12px;
   }
 
+  .brand-logo {
+    width: 38px;
+    height: 38px;
+  }
+
+  .brand strong {
+    font-size: 17px;
+  }
+
+  .brand span {
+    font-size: 12px;
+  }
+
   .nav-tabs {
-    display: flex;
-    overflow-x: auto;
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 8px;
   }
 
   .nav-tab {
-    white-space: nowrap;
+    justify-content: center;
+    min-height: 40px;
+    padding: 0 8px;
+    text-align: center;
+    white-space: normal;
+    font-size: 14px;
   }
 
   .topbar,
@@ -579,6 +599,12 @@ label {
   .topbar {
     display: grid;
     align-items: start;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .bike-picker {
+    min-width: 0;
   }
 
   .metric-grid {
@@ -597,11 +623,57 @@ label {
 
 @media (max-width: 620px) {
   .main {
-    padding: 18px;
+    padding: 16px 14px 22px;
+  }
+
+  .sidebar {
+    padding: 12px 14px 14px;
   }
 
   h1 {
-    font-size: 24px;
+    font-size: 25px;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+  }
+
+  .notice-strip {
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .notice-strip article,
+  .metric,
+  .panel {
+    padding: 14px;
+  }
+
+  .notice-strip span {
+    font-size: 12px;
+  }
+
+  .metric strong {
+    font-size: 26px;
+  }
+
+  select,
+  input,
+  button {
+    min-height: 40px;
+  }
+
+  .bike-picker {
+    gap: 5px;
+  }
+
+  .bike-picker select {
+    font-size: 15px;
+    font-weight: 700;
+  }
+
+  .panel-header {
+    margin-bottom: 12px;
   }
 
   .metric-grid,
