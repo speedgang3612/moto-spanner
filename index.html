@@ -95,7 +95,23 @@
 
         <section id="garage" class="view">
           <div class="content-grid">
-            <form id="bikeForm" class="panel form-panel">
+            <section id="currentBikePanel" class="panel current-bike-panel">
+              <div class="panel-header">
+                <h2>내 바이크</h2>
+                <button id="toggleBikeForm" type="button">+ 바이크 추가</button>
+              </div>
+              <div id="currentBikeSummary"></div>
+            </section>
+
+            <section class="panel">
+              <div class="panel-header">
+                <h2>다른 바이크 선택</h2>
+              </div>
+              <div id="bikeList" class="bike-list"></div>
+            </section>
+          </div>
+
+          <form id="bikeForm" class="panel form-panel">
               <div class="panel-header">
                 <h2>오토바이 등록</h2>
               </div>
@@ -138,13 +154,6 @@
               <button class="primary" type="submit">바이크 추가</button>
             </form>
 
-            <section class="panel">
-              <div class="panel-header">
-                <h2>등록된 바이크</h2>
-              </div>
-              <div id="bikeList" class="bike-list"></div>
-            </section>
-          </div>
           <section class="panel quick-history-panel">
             <div class="panel-header">
               <h2>최근 정비 이력 빠른 입력</h2>

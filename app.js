@@ -98,6 +98,7 @@ const defaultState = {
 let state = loadState();
 ensureStateShape();
 let cameraStream = null;
+let bikeFormOpen = false;
 
 function loadState() {
   const saved = localStorage.getItem(STORAGE_KEY);
@@ -358,6 +359,7 @@ function inferCoolingForModel(brand, model) {
 function render() {
   const bike = getBike();
   if (!bike) {
+    bikeFormOpen = true;
     saveState();
     renderEmptyState();
     return;
@@ -366,7 +368,7 @@ function render() {
   saveState();
   renderBikePicker(bike);
   renderDashboard(bike);
-  renderBikes();
+  renderGarage(bike);
   renderMaintenanceControls(bike);
   renderOdoHistory(bike);
   renderQuickHistory(bike);
@@ -384,6 +386,11 @@ function renderEmptyState() {
   document.querySelector("#dueList").innerHTML = `<div class="empty">아직 등록된 오토바이가 없습니다. 내 바이크 화면에서 첫 오토바이를 등록하면 정비 예정표가 생성됩니다.</div>`;
   document.querySelector("#recentList").innerHTML = `<div class="empty">아직 기록이 없습니다.</div>`;
   document.querySelector("#bikeList").innerHTML = `<div class="empty">등록된 바이크가 없습니다.</div>`;
+  document.querySelector("#currentBikeSummary").innerHTML = `<div class="empty">첫 오토바이를 등록하면 이 화면에서 주행거리, 정비 기준, 최근 기록을 바로 확인할 수 있습니다.</div>`;
+  document.querySelector("#currentBikePanel").classList.remove("hidden");
+  document.querySelector("#bikeForm").classList.remove("hidden");
+  document.querySelector("#toggleBikeForm").textContent = "첫 바이크 등록";
+  document.querySelector("#toggleBikeForm").disabled = true;
   document.querySelector("#maintenanceItemSelect").innerHTML = "";
   document.querySelector("#intervalEditor").innerHTML = `<div class="empty">바이크를 등록하면 사용 패턴별 정비 주기를 설정할 수 있습니다.</div>`;
   document.querySelector("#odoHistory").innerHTML = `<div class="empty">계기판 기록이 없습니다.</div>`;
@@ -471,7 +478,42 @@ function renderRecent(bike) {
   return records.map((record) => `<article class="record"><strong>${record.date} · ${record.type}</strong>${record.label}<br />${km(record.odometer)} ${record.memo || ""}</article>`).join("");
 }
 
-function renderBikes() {
+function garageStats(bike) {
+  const fuelCount = state.fuelLogs.filter((log) => log.bikeId === bike.id).length;
+  const maintenanceCount = state.maintenanceLogs.filter((log) => log.bikeId === bike.id).length;
+  const odometerCount = state.odometerLogs.filter((log) => log.bikeId === bike.id).length;
+  const dueCount = dueItems(bike).filter((item) => item.status !== "ok").length;
+  return { fuelCount, maintenanceCount, odometerCount, dueCount };
+}
+
+function renderGarage(bike) {
+  const stats = garageStats(bike);
+  const profile = usageProfiles[bike.usage] || usageProfiles.commute;
+  document.querySelector("#currentBikePanel").classList.remove("hidden");
+  document.querySelector("#toggleBikeForm").disabled = false;
+  document.querySelector("#toggleBikeForm").textContent = bikeFormOpen ? "등록 폼 닫기" : "+ 바이크 추가";
+  document.querySelector("#bikeForm").classList.toggle("hidden", !bikeFormOpen);
+  document.querySelector("#currentBikeSummary").innerHTML = `<article class="current-bike-card">
+    <div>
+      <span class="category-badge">선택됨</span>
+      <strong>${escapeHtml(bike.maker)} ${escapeHtml(bike.model)}</strong>
+      <p>${bike.year || "-"}년식 · ${bike.cc}cc · ${labelFor(bike.transmission)} · ${labelFor(bike.cooling)} · ${profile.label}</p>
+    </div>
+    <div class="garage-metrics">
+      <article><span>현재 주행거리</span><strong>${km(bike.odometer)}</strong></article>
+      <article><span>주의 정비</span><strong>${stats.dueCount}개</strong></article>
+      <article><span>주유 기록</span><strong>${stats.fuelCount}건</strong></article>
+      <article><span>정비 기록</span><strong>${stats.maintenanceCount}건</strong></article>
+    </div>
+    <div class="garage-recent">
+      <h3>최근 내역</h3>
+      ${renderRecent(bike)}
+    </div>
+  </article>`;
+  renderBikes(bike);
+}
+
+function renderBikes(activeBike = getBike()) {
   const container = document.querySelector("#bikeList");
   if (!state.bikes.length) {
     container.innerHTML = `<div class="empty">등록된 바이크가 없습니다.</div>`;
@@ -480,7 +522,7 @@ function renderBikes() {
   container.innerHTML = state.bikes.map((bike) => `<article class="bike-card">
     <div><strong>${bike.maker} ${bike.model}</strong>${bike.year || "-"}년식 · ${bike.cc}cc · ${km(bike.odometer)}</div>
     <div class="bike-actions">
-      <button data-select-bike="${bike.id}">선택</button>
+      ${bike.id === activeBike?.id ? `<span class="status ok">선택됨</span>` : `<button data-select-bike="${bike.id}">선택</button>`}
       <button data-delete-bike="${bike.id}">삭제</button>
     </div>
   </article>`).join("");
@@ -588,6 +630,10 @@ document.querySelector("#modelSelect").addEventListener("change", applySelectedM
 
 document.querySelector("#enableMaintenanceAlerts").addEventListener("click", enableMaintenanceAlerts);
 document.querySelector("#saveQuickHistory").addEventListener("click", saveQuickHistory);
+document.querySelector("#toggleBikeForm").addEventListener("click", () => {
+  bikeFormOpen = !bikeFormOpen;
+  render();
+});
 
 document.querySelector("#bikeForm").addEventListener("submit", (event) => {
   event.preventDefault();
@@ -619,6 +665,7 @@ document.querySelector("#bikeForm").addEventListener("submit", (event) => {
   bike.intervals = buildIntervals(bike);
   state.bikes.push(bike);
   state.activeBikeId = bike.id;
+  bikeFormOpen = false;
   event.currentTarget.reset();
   initBikeModelPicker();
   setDefaults();

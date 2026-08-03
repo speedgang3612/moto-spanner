@@ -269,6 +269,7 @@ input {
 .form-panel {
   display: grid;
   gap: 16px;
+  margin-top: 16px;
 }
 
 .form-grid {
@@ -295,6 +296,56 @@ label {
 
 .quick-history-panel {
   margin-top: 16px;
+}
+
+.current-bike-card {
+  display: grid;
+  gap: 16px;
+}
+
+.current-bike-card > div:first-child strong {
+  display: block;
+  font-size: 26px;
+  line-height: 1.15;
+}
+
+.current-bike-card p {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+.garage-metrics {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.garage-metrics article {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #fbfcfb;
+  padding: 12px;
+}
+
+.garage-metrics span,
+.garage-recent h3 {
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.garage-metrics strong {
+  display: block;
+  margin-top: 8px;
+  font-size: 20px;
+}
+
+.garage-recent {
+  display: grid;
+  gap: 10px;
+}
+
+.garage-recent h3 {
+  margin: 0;
 }
 
 .quick-history-grid {
@@ -534,6 +585,10 @@ label {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
+  .garage-metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
   .notice-strip,
   .notice-strip.compact {
     grid-template-columns: 1fr;
@@ -550,6 +605,7 @@ label {
   }
 
   .metric-grid,
+  .garage-metrics,
   .form-grid {
     grid-template-columns: 1fr;
   }
