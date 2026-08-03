@@ -204,12 +204,20 @@ function groupForItem(item) {
 
 function groupedIntervalEntries(intervals) {
   const groups = {};
-  Object.entries(intervals).forEach(([item, interval]) => {
+  visibleIntervalEntries(intervals).forEach(([item, interval]) => {
     const group = groupForItem(item);
     groups[group.label] = groups[group.label] || { ...group, items: [] };
     groups[group.label].items.push([item, interval]);
   });
   return Object.values(groups).sort((a, b) => a.order - b.order);
+}
+
+function visibleIntervalEntries(intervals) {
+  return Object.entries(intervals).filter(([item]) => !isLegacyAggregateItem(item));
+}
+
+function isLegacyAggregateItem(item) {
+  return item === "brakePads" || item === "tire" || item === "chainSet";
 }
 
 function lastMaintenance(item, bikeId) {
@@ -234,7 +242,7 @@ function addMonths(dateText, months) {
 
 function dueItems(bike) {
   const intervals = buildIntervals(bike);
-  return Object.entries(intervals).map(([item, interval]) => {
+  return visibleIntervalEntries(intervals).map(([item, interval]) => {
     const last = lastMaintenance(item, bike.id);
     const baseOdo = last ? Number(last.odometer) : 0;
     const elapsedKm = Math.max(0, Number(bike.odometer) - baseOdo);
@@ -439,7 +447,7 @@ function renderDashboard(bike) {
   const profile = usageProfiles[bike.usage] || usageProfiles.commute;
   document.querySelector("#maintenanceProfileName").textContent = `${bike.cc}cc · ${labelFor(bike.transmission)} · ${profile.label} · ${profile.description}`;
 
-  document.querySelector("#dueList").innerHTML = due.map(renderDueCard).join("");
+  document.querySelector("#dueList").innerHTML = renderDueList(due);
   document.querySelector("#recentList").innerHTML = renderRecent(bike);
 }
 
@@ -455,10 +463,10 @@ function fuelEfficiency(logs) {
 }
 
 function renderDueCard(due) {
-  const statusText = due.status === "due" ? "정비 필요" : due.status === "soon" ? "곧 필요" : "정상";
+  const statusText = due.status === "due" ? "정비 필요" : due.status === "soon" ? "곧 필요" : due.last ? "예정" : "정상";
   const next = due.last
-    ? `다음 기준 ${due.nextOdometer ? km(due.nextOdometer) : ""}${due.nextDate ? ` · ${due.nextDate}` : ""}`
-    : "정비 완료 기록을 저장하면 다음 알림 기준점이 생깁니다.";
+    ? `다음 정비 ${due.nextOdometer ? km(due.nextOdometer) : ""}${due.nextDate ? ` · ${due.nextDate}` : ""}`
+    : "최근 정비 이력을 저장하면 다음 정비 km/날짜가 계산됩니다.";
   const remaining = due.last
     ? `${remainingText(due)} · 마지막 ${due.last.date} / ${km(due.last.odometer)}`
     : "아직 정비 기록이 없습니다.";
@@ -467,6 +475,31 @@ function renderDueCard(due) {
     <div><small class="category-badge">${due.group}</small><strong>${due.label}</strong><span>${detail}</span></div>
     <span class="status ${due.status}">${statusText}</span>
   </article>`;
+}
+
+function renderDueList(due) {
+  const attention = due.filter((item) => item.status !== "ok");
+  const upcoming = due
+    .filter((item) => item.status === "ok" && item.last)
+    .sort((a, b) => nextDueRank(a) - nextDueRank(b))
+    .slice(0, 8);
+  const sections = [];
+  if (attention.length) {
+    sections.push(`<section class="due-section"><h3>정비 필요 / 기록 필요</h3>${attention.map(renderDueCard).join("")}</section>`);
+  }
+  if (upcoming.length) {
+    sections.push(`<section class="due-section"><h3>다음 정비 예정</h3>${upcoming.map(renderDueCard).join("")}</section>`);
+  }
+  if (!sections.length) {
+    return `<div class="empty">최근 정비 이력을 입력하면 다음 정비 예정이 표시됩니다.</div>`;
+  }
+  return sections.join("");
+}
+
+function nextDueRank(due) {
+  const kmRank = Number.isFinite(due.kmRemaining) ? due.kmRemaining : Infinity;
+  const monthRank = Number.isFinite(due.monthRemaining) ? due.monthRemaining * 1000 : Infinity;
+  return Math.min(kmRank, monthRank);
 }
 
 function remainingText(due) {
@@ -561,7 +594,7 @@ function renderQuickHistory(bike) {
   const container = document.querySelector("#quickHistoryGrid");
   if (!container || !bike) return;
   const intervals = buildIntervals(bike);
-  const quickIntervals = Object.fromEntries(quickHistoryItems.filter((item) => intervals[item]).map((item) => [item, intervals[item]]));
+  const quickIntervals = Object.fromEntries(visibleIntervalEntries(intervals));
   container.innerHTML = groupedIntervalEntries(quickIntervals).map((group) => `<section class="quick-history-group">
     <h3>${group.label}</h3>
     ${group.items.map(([item]) => `<div class="quick-history-row">
